@@ -1,3 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 100px; /* תשנה את המספר לפי הגובה של ההדר שלך */
+}
+
 @import "tailwindcss";
 
 :root {
@@ -5,22 +13,185 @@
   --foreground: #171717;
 }
 
+/* הגדרות ערכת נושא של Tailwind */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-heebo); /* חיבור לפונט שהגדרנו ב-Layout */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* עיצוב בסיסי לגוף האתר */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* מחקנו את ה-Arial כדי שהפונט Heebo מה-Layout ישלוט באתר */
+}
+
+/* ── הגדרות נגישות (A11Y) ── */
+
+/* מצב ניגודיות גבוהה - שחור וצהוב */
+body.a11y-high-contrast {
+  background: #000 !important;
+  color: #ffe600 !important;
+}
+
+body.a11y-high-contrast *:not([class*="a11y"]) {
+  background: #000 !important;
+  color: #ffe600 !important;
+  border-color: #ffe600 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* הדגשת קישורים בכל האתר */
+body.a11y-underline-links a:not([class*="a11y"]) {
+  text-decoration: underline !important;
+  text-underline-offset: 4px;
+}
+
+/* ביטול אנימציות למניעת סחרחורת/אפילפסיה */
+body.a11y-no-anim *,
+body.a11y-no-anim *::before,
+body.a11y-no-anim *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* מצב שחור לבן */
+body.a11y-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+/* פונט קריא - מחליף לפונט מערכת בסיסי */
+body.a11y-readable-font * {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif !important;
+}
+
+/* סמן עכבר גדול */
+body.a11y-big-cursor * {
+  cursor:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="black" stroke="white" stroke-width="1"><path d="M7 2l12 11.2l-5.8 0.5l3.3 7.3l-2.2 1l-3.2-7.4L7 19V2z"/></svg>'),
+    auto !important;
+}
+
+/* הדגשת כותרות */
+body.a11y-highlight-headers h1,
+body.a11y-highlight-headers h2,
+body.a11y-highlight-headers h3 {
+  background-color: #ff0 !important;
+  color: #000 !important;
+  outline: 2px solid #000 !important;
+}
+
+/* פעימת וואטסאפ עדינה ומקצועית */
+@keyframes subtle-whatsapp-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.animate-whatsapp-subtle-pulse {
+  animation: subtle-whatsapp-pulse 2s infinite;
+}
+
+/* --- global.css - סקשן 4 (מעודכן עם טשטוש מוגבר בתחתית) --- */
+
+/* 1. אנימציית ציפה עדינה */
+@keyframes bobbing {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-bob {
+  animation: bobbing 5s ease-in-out infinite;
+}
+
+/* 2. אפקט הטשטוש (Mask) לכתף הימנית ולתחתית התמונה */
+.profile-mask {
+  /* מסיכה אופקית לכתף ימין */
+  -webkit-mask-image:
+    linear-gradient(to left, transparent 0%, black 15%, black 100%),
+    linear-gradient(to top, transparent 0%, black 30%, black 100%); /* שינוי מ-15% ל-30% לטשטוש עמוק יותר */
+
+  /* גרסת סטנדרט */
+  mask-image:
+    linear-gradient(to left, transparent 0%, black 15%, black 100%),
+    linear-gradient(to top, transparent 0%, black 30%, black 100%); /* שינוי מ-15% ל-30% לטשטוש עמוק יותר */
+
+  /* שילוב המסיכות */
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+/* ── SECTION 5: ANIMATIONS & CUSTOM BUTTONS ── */
+
+/* 1. אנימציית ריחוף למחשב (Floating Effect) */
+@keyframes float-hero {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(var(--r));
+  }
+  50% {
+    transform: translateY(-20px) rotate(var(--r));
+  }
+}
+
+.floating-project {
+  animation: float-hero 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.15));
+  transition: all 0.5s ease;
+}
+
+/* 2. ניהול זמני השהייה לאנימציה (Delays) */
+.delay-1 {
+  animation-delay: 0s;
+}
+.delay-2 {
+  animation-delay: 1.5s;
+}
+.delay-3 {
+  animation-delay: 3s;
+}
+.delay-4 {
+  animation-delay: 4.5s;
+}
+
+/* כפתור "ראה עוד" - ממורכז, קרוב יותר לתבנית שמעליו */
+.minimal-btn {
+  display: block;
+  margin: 0.5rem auto 1.5rem; /* צמצמתי את הרווח העליון ל-0.5rem */
+  padding: 10px 24px;
+  border: 1px solid #a07730;
+  border-radius: 999px;
+  color: #a07730;
+  background: transparent;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.minimal-btn:hover {
+  background: #a07730;
+  color: white;
+}
+
+.minimal-btn:active {
+  transform: scale(0.95);
 }
