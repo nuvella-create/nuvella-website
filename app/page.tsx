@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react"; /* המון קשור פה לסקשין 5 אז להתייעץ עם הצאט לפני ביצוע שינוי*/
+import { useState } from "react"; /* המון קשור פה לסקשין 5 אז להתייעץ לפני שינוי */
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,6 +11,15 @@ export default function Home() {
 
   // המצב החדש - האם להציג את שאר העבודות
   const [showMore, setShowMore] = useState(false);
+
+  // הגדרת הסטטוס כולל שגיאות ספציפיות לכל שדה
+  const [status, setStatus] = useState<{
+    success?: boolean;
+    error?: string;
+    fieldErrors?: { name?: string; phone?: string; message?: string };
+  } | null>(null);
+
+  const [isPending, setIsPending] = useState(false);
 
   // רשימת פרויקטים מעודכנת עם כותרות ותיאורים שיווקיים
   const projects = [
@@ -937,7 +946,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* ── 7. CONTACT: גרסת השקה נעולה וחוקית ── */}
+      {/* ── 7. CONTACT: גרסה חכמה עם הודעת תודה ── */}
       <section
         id="contact"
         className="pt-12 pb-20 md:pt-24 md:pb-32 px-4 md:px-6 bg-white"
@@ -963,95 +972,175 @@ export default function Home() {
             תשאיר פרטים, נתאם שיחה קצרה ונבין אם אנחנו יוצאים לדרך.
           </p>
 
-          <div className="bg-[#F9F9F9] px-4 py-8 md:p-12 rounded-[24px] md:rounded-[32px] border border-gray-100 shadow-2xl shadow-[#A07730]/5 text-right">
-            {/* הטופס מחובר לפעולת השרת */}
-            <form
-              action={async (formData) => {
-                await sendContactForm(formData);
-              }}
-              className="flex flex-col gap-5"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-right">
-                <div className="w-full">
-                  <label className="block text-xs font-bold text-[#1A1A1A] mb-2 mr-1">
-                    שם מלא
-                  </label>
-                  <input
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="ישראל ישראלי"
-                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-4 focus:border-[#A07730] outline-none transition-all text-right"
-                  />
-                </div>
-                <div className="w-full">
-                  <label className="block text-xs font-bold text-[#1A1A1A] mb-2 mr-1">
-                    טלפון
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    required
-                    placeholder="050-0000000"
-                    className="w-full bg-white border border-gray-200 rounded-xl px-4 py-4 focus:border-[#A07730] outline-none transition-all text-right"
-                  />
-                </div>
-              </div>
-
-              <div className="w-full text-right">
-                <label className="block text-xs font-bold text-[#1A1A1A] mb-2 mr-1">
-                  ספר לי קצת על העסק
-                </label>
-                <textarea
-                  name="message"
-                  rows={4}
-                  placeholder="כמה מילים על העסק ומה המטרה שלך מהדף..."
-                  className="w-full bg-white border border-gray-100 rounded-xl px-4 py-4 focus:border-[#A07730] outline-none transition-all text-right resize-none"
-                ></textarea>
-              </div>
-
-              <div className="flex items-center gap-3 px-1 order-2 md:order-1">
-                <input
-                  name="privacy"
-                  type="checkbox"
-                  id="privacy"
-                  required
-                  className="w-4 h-4 accent-[#A07730] cursor-pointer shrink-0"
-                />
-                <label
-                  htmlFor="privacy"
-                  className="text-[11px] md:text-[12px] text-[#4A4A4A] cursor-pointer leading-tight select-none"
-                >
-                  אני מאשר/ת קבלת עדכונים מקצועיים בכפוף ל-
-                  <Link
-                    href="/privacy"
-                    className="text-[#A07730] underline font-bold hover:text-[#8A6528] mx-1"
+          <div className="bg-[#F9F9F9] px-4 py-8 md:p-12 rounded-[24px] md:rounded-[32px] border border-gray-100 shadow-2xl shadow-[#A07730]/5 text-right transition-all duration-500">
+            {status?.success ? (
+              /* --- הודעת תודה --- */
+              <div className="py-12 flex flex-col items-center animate-in fade-in zoom-in duration-500">
+                <div className="w-20 h-20 bg-[#FAF5EB] rounded-full flex items-center justify-center mb-6 border border-[#A07730]/20">
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#A07730"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    מדיניות הפרטיות
-                  </Link>
-                </label>
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl md:text-4xl font-black text-[#1A1A1A] mb-4">
+                  הפנייה התקבלה!
+                </h3>
+                <p className="text-[#4A4A4A] text-lg md:text-xl font-medium">
+                  המייל אצלי. אני עובר על הפרטים וחוזר אליך בהקדם לתיאום שיחה.
+                </p>
               </div>
+            ) : (
+              /* --- הטופס המקורי --- */
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault(); // עוצר את האיפוס האוטומטי של Next.js
+                  setIsPending(true);
+                  setStatus(null);
 
-              <button
-                type="submit"
-                className="w-full bg-[#A07730] hover:bg-[#8A6528] text-white font-black py-5 rounded-2xl shadow-lg shadow-[#A07730]/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98] order-1 md:order-2"
+                  const formData = new FormData(e.currentTarget);
+                  const result = await sendContactForm(formData);
+
+                  setIsPending(false);
+                  setStatus(result);
+
+                  // מאפס רק אם הכל עבר חלק
+                  if (result?.success === true) {
+                    e.currentTarget.reset();
+                  }
+                }}
+                id="contact-form"
+                className="flex flex-col gap-5"
               >
-                <span>שלח ובוא נבדוק התאמה</span>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                {/* שדה מלכודת (Honeypot) */}
+                <div className="hidden" aria-hidden="true">
+                  <input
+                    name="fax_number"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-right">
+                  {/* שדה שם מלא */}
+                  <div className="w-full">
+                    <label className="block text-xs font-bold text-[#1A1A1A] mb-2 mr-1">
+                      שם מלא
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="ישראל ישראלי"
+                      className={`w-full bg-white border ${status?.fieldErrors?.name ? "border-red-500" : "border-gray-200"} rounded-xl px-4 py-4 focus:border-[#A07730] outline-none transition-all text-right`}
+                    />
+                    {status?.fieldErrors?.name && (
+                      <p className="text-red-600 text-[11px] font-bold mt-1 mr-1">
+                        {status.fieldErrors.name}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* שדה טלפון */}
+                  <div className="w-full">
+                    <label className="block text-xs font-bold text-[#1A1A1A] mb-2 mr-1">
+                      טלפון
+                    </label>
+                    <input
+                      name="phone"
+                      type="tel"
+                      required
+                      placeholder="050-0000000"
+                      className={`w-full bg-white border ${status?.fieldErrors?.phone ? "border-red-500" : "border-gray-200"} rounded-xl px-4 py-4 focus:border-[#A07730] outline-none transition-all text-right`}
+                    />
+                    {status?.fieldErrors?.phone && (
+                      <p className="text-red-600 text-[11px] font-bold mt-1 mr-1">
+                        {status.fieldErrors.phone}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* שדה הודעה / תיאור עסק */}
+                <div className="w-full text-right">
+                  <label className="block text-xs font-bold text-[#1A1A1A] mb-2 mr-1">
+                    ספר לי קצת על העסק
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    placeholder="כמה מילים על העסק ומה המטרה שלך מהדף..."
+                    className={`w-full bg-white border ${status?.fieldErrors?.message ? "border-red-500" : "border-gray-200"} rounded-xl px-4 py-4 focus:border-[#A07730] outline-none transition-all text-right resize-none`}
+                  ></textarea>
+                  {status?.fieldErrors?.message && (
+                    <p className="text-red-600 text-[11px] font-bold mt-1 mr-1">
+                      {status.fieldErrors.message}
+                    </p>
+                  )}
+                </div>
+
+                {/* שגיאה כללית (כמו חריגה ממכסת שליחות) */}
+                {status?.error && (
+                  <p className="text-red-600 text-[13px] font-bold text-center -mb-2">
+                    {status.error}
+                  </p>
+                )}
+
+                {/* ... (כאן נשארים הצ'קבוקס של הפרטיות והכפתור של השליחה כפי שהיו) ... */}
+                <div className="flex items-center gap-3 px-1 order-2 md:order-1">
+                  <input
+                    name="privacy"
+                    type="checkbox"
+                    id="privacy"
+                    required
+                    className="w-4 h-4 accent-[#A07730] cursor-pointer shrink-0"
+                  />
+                  <label
+                    htmlFor="privacy"
+                    className="text-[11px] md:text-[12px] text-[#4A4A4A] cursor-pointer leading-tight select-none"
+                  >
+                    אני מאשר/ת קבלת עדכונים מקצועיים בכפוף ל-
+                    <Link
+                      href="/privacy"
+                      className="text-[#A07730] underline font-bold hover:text-[#8A6528] mx-1"
+                    >
+                      מדיניות הפרטיות
+                    </Link>
+                  </label>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full bg-[#A07730] hover:bg-[#8A6528] disabled:opacity-70 text-white font-black py-5 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-3 active:scale-[0.98] order-1 md:order-2"
                 >
-                  <line x1="22" y1="2" x2="11" y2="13" />
-                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
-                </svg>
-              </button>
-            </form>
+                  <span>{isPending ? "שולח..." : "שלח ובוא נבדוק התאמה"}</span>
+                  {!isPending && (
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <line x1="22" y1="2" x2="11" y2="13" />
+                      <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
           {/* צ'קליסט תחתון */}
