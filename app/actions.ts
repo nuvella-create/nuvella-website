@@ -33,7 +33,6 @@ export async function sendContactForm(formData: FormData) {
   // --- שכבת אבטחה 1: מלכודת דבש (Honeypot) ---
   const honeypot = formData.get("fax_number");
   if (honeypot && (honeypot as string).length > 0) {
-    console.log("⚠️ Bot Detected");
     return { success: true };
   }
 
@@ -57,7 +56,6 @@ export async function sendContactForm(formData: FormData) {
   const validated = contactSchema.safeParse(rawData);
 
   if (!validated.success) {
-    // שליחת כל השגיאות לפי שדות - זה מה שמונע את איפוס הטופס
     const errors = validated.error.flatten().fieldErrors;
     return {
       fieldErrors: {
@@ -75,14 +73,14 @@ export async function sendContactForm(formData: FormData) {
     await resend.emails.send({
       from: "Nuvella <office@nuvella.co.il>",
       to: ["office@nuvella.co.il"],
-      replyTo: phone, // מאפשר לך ללחוץ 'השב' במייל ולחזור ישירות ללקוח
+      replyTo: phone,
       subject: `ליד חדש: ${name}`,
       text: `שם: ${name}\nטלפון: ${phone}\nהודעה: ${message || "ללא הודעה"}`,
     });
 
-    console.log(`✅ Lead received from ${name}`);
     return { success: true };
   } catch (error) {
+    // את השגיאה הזאת השארתי כ-error כי היא נשארת בשרת (ורסל) ולא דולפת ללקוח - חשוב לדיבאג
     console.error("❌ Resend Error:", error);
     return { error: "משהו השתבש בשליחה לרזנט." };
   }

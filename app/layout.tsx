@@ -3,10 +3,9 @@ import { Heebo } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
-import AccessibilityWidget from "@/components/ui/AccessibilityWidget";
+import FloatingActions from "@/components/layout/FloatingActions"; // ייבוא החדש
+import CookieBanner from "@/components/layout/CookieBanner";
 
-// הגדרת הפונט Heebo לכל האתר
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
   variable: "--font-heebo",
@@ -18,9 +17,14 @@ export const metadata: Metadata = {
   description:
     "אנחנו בונים דפי נחיתה, מריצים קמפיינים ומביאים לידים אמיתיים לעסקים רציניים.",
   icons: {
-    icon: "/images/favicon.png", // הנתיב לקובץ שלך בתוך public
+    icon: [
+      { url: "/images/favicon.png" }, // לבדיקה רגילה
+      { url: "/images/favicon.png", sizes: "192x192", type: "image/png" }, // לגוגל חיפוש
+    ],
     shortcut: "/images/favicon.png",
-    apple: "/images/favicon.png",
+    apple: [
+      { url: "/images/favicon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -36,12 +40,13 @@ export default function RootLayout({
       >
         <Header />
 
-        {/* pt-20 דואג שהתוכן יתחיל מתחת להדר הקבוע */}
         <main className="flex-grow pt-20">{children}</main>
 
-        {/* רכיבים צפים שיופיעו בכל דפי האתר */}
-        <WhatsAppButton />
-        <AccessibilityWidget />
+        {/* הבאנר תופס את התחתית ומסתיר הכל */}
+        <CookieBanner />
+
+        {/* האייקונים (ווטסאפ ונגישות) יופיעו פה רק אחרי אישור בבאנר */}
+        <FloatingActions />
 
         <Footer />
       </body>

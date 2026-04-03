@@ -105,6 +105,21 @@ body.a11y-highlight-headers h3 {
   animation: subtle-whatsapp-pulse 2s infinite;
 }
 
+/* --- global.css - סקשן 1 (כותרת מבריקה) --- */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
 /* --- global.css - סקשן 4 (מעודכן עם טשטוש מוגבר בתחתית) --- */
 
 /* 1. אנימציית ציפה עדינה */

@@ -63,10 +63,38 @@ export default function Home() {
     <div id="top" className="flex flex-col w-full font-heebo">
       {/* ── HERO SECTION - אייקונים גרפיים נקיים בזהב ── */}
       {/* ── HERO SECTION ── */}
-      <section className="relative pt-8 pb-12 md:pt-14 md:pb-20 px-6 bg-white overflow-hidden font-heebo">
-        <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center">
+      <section className="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden font-heebo py-12 md:py-20 bg-white">
+        {/* תמונת רקע - דסקטופ (מופיעה רק ממסך בינוני ומעלה) */}
+        <div className="hidden md:block absolute inset-0 w-full h-full z-0">
+          <Image
+            src="/images/img-desktop.png"
+            alt="Nuvella Background Desktop"
+            fill
+            priority
+            className="object-cover object-center"
+            quality={100}
+          />
+        </div>
+
+        {/* תמונת רקע - מובייל (מופיעה רק במסכים קטנים) */}
+        <div className="block md:hidden absolute inset-0 w-full h-full z-0">
+          <Image
+            src="/images/img-mobile.png"
+            alt="Nuvella Background Mobile"
+            fill
+            priority
+            className="object-cover object-center"
+            quality={100}
+          />
+        </div>
+
+        {/* שכבת הגנה (Overlay) - שומרת על קריאות הטקסט מעל התמונה החדשה */}
+        <div className="absolute inset-0 bg-white/20 z-[1] pointer-events-none" />
+
+        {/* התוכן של הסקשן - יושב מעל הכל בזכות z-10 */}
+        <div className="max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center px-6">
           {/* Badge Pill */}
-          <div className="flex items-center gap-4 bg-[#FAF5EB] border border-[#E8D5A8] px-5 py-2 rounded-full mb-8 shadow-sm">
+          <div className="flex items-center gap-4 bg-[#FAF5EB]/90 border border-[#E8D5A8] px-5 py-2 rounded-full mb-8 shadow-sm backdrop-blur-sm">
             <span className="text-[#A07730] text-sm font-bold leading-none">
               נותרו 3 מקומות מתוך 5
             </span>
@@ -79,22 +107,26 @@ export default function Home() {
             </div>
           </div>
 
-          <h1 className="text-[clamp(24px,7.5vw,36px)] md:text-6xl font-black text-[#1A1A1A] leading-[1.1] mb-6 tracking-tight px-4 text-center drop-shadow-[0_4px_10px_rgba(0,0,0,0.06)]">
+          {/* הכותרת (H1) עם אפקט שיין זהב מבריק עדין */}
+          <h1 className="text-[5.8vw] md:text-6xl font-black text-[#1A1A1A] leading-[1.1] mb-6 tracking-tight px-4 text-center drop-shadow-[0_4px_10px_rgba(0,0,0,0.06)] w-full">
             <span className="block whitespace-nowrap">
               מחפש 5 בעלי עסקים רציניים
             </span>
-            <span className="text-[#A07730] block whitespace-nowrap">
+
+            {/* השורה הזהובה - ה"שיין" מוחל כאן */}
+            <span className="block whitespace-nowrap bg-gradient-to-r from-[#A07730] via-[#E7C58A] to-[#A07730] bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto] font-black">
               לחודש עבודה ללא עלות
             </span>
           </h1>
 
-          <p className="text-[15px] md:text-xl text-[#6B6B6B] max-w-[340px] md:max-w-3xl mx-auto mb-8 md:mb-12 font-medium leading-relaxed text-center text-balance">
+          {/* הפסקה השיווקית */}
+          <p className="text-[15px] md:text-xl text-[#1A1A1A] max-w-[320px] md:max-w-3xl mx-auto mb-8 md:mb-12 font-bold leading-relaxed text-center text-balance bg-white/10 backdrop-blur-[2px] rounded-lg p-2">
             אני בונה לך דף נחיתה מקצועי, מריץ פרסום ממוקד ומכניס לך לידים
             איכותיים במשך חודש שלם, ללא עלות כלל.
           </p>
 
+          {/* הכפתורים */}
           <div className="flex flex-col sm:flex-row items-center gap-4 mb-8 md:mb-16">
-            {/* כפתור זהב - יורד לסוף לטופס */}
             <Link
               href="#contact"
               className="flex items-center gap-2 bg-[#A07730] text-white px-7 py-3.5 md:px-10 md:py-4.5 rounded-xl font-bold text-base md:text-lg hover:scale-105 transition-transform shadow-md"
@@ -114,10 +146,9 @@ export default function Home() {
               בואו נבדוק התאמה
             </Link>
 
-            {/* כפתור לבן - יורד למה אני מציע */}
             <Link
               href="#how"
-              className="flex items-center gap-2 bg-white border border-[#E5E5E0] text-[#1A1A1A] px-7 py-3.5 md:px-10 md:py-4.5 rounded-xl font-bold text-base md:text-lg hover:bg-gray-50 transition-colors"
+              className="flex items-center gap-2 bg-white/80 border border-[#E5E5E0] text-[#1A1A1A] px-7 py-3.5 md:px-10 md:py-4.5 rounded-xl font-bold text-base md:text-lg hover:bg-white transition-colors backdrop-blur-sm"
             >
               <svg
                 width="18"
@@ -137,7 +168,7 @@ export default function Home() {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-row items-center justify-center gap-x-2 md:gap-x-10 text-[10px] md:text-sm font-bold text-[#A07730] w-full max-w-[340px] md:max-w-none mx-auto">
+          <div className="flex flex-row items-center justify-center gap-x-2 md:gap-x-10 text-[10px] md:text-sm font-bold text-[#A07730] w-full max-w-[340px] md:max-w-none mx-auto bg-white/30 backdrop-blur-md py-3 rounded-2xl">
             <div className="flex items-center gap-1 shrink-0">
               <svg
                 width="13"
@@ -190,6 +221,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* שכבת מעבר חלקה לסקשן הבא */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F9F9F9] to-transparent z-[2]" />
       </section>
       {/* ── 2. IDENTIFICATION - גרסה מהודקת ── */}
       <section
