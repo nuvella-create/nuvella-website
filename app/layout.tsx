@@ -3,8 +3,9 @@ import { Heebo } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import FloatingActions from "@/components/layout/FloatingActions"; // ייבוא החדש
+import FloatingActions from "@/components/layout/FloatingActions";
 import CookieBanner from "@/components/layout/CookieBanner";
+import TrackingScripts from "@/components/layout/TrackingScripts"; // הייבוא החדש
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -13,18 +14,25 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
-  title: "Nuvella Digital | פתרונות שיווק ודיגיטל לעסקים",
+  metadataBase: new URL("https://nuvella.co.il"), // השורה שמוסיפים כדי לסדר את ה-Open Graph
+  title: "נויבלה דיגיטל | פתרונות שיווק ודיגיטל לעסקים",
   description:
     "אנחנו בונים דפי נחיתה, מריצים קמפיינים ומביאים לידים אמיתיים לעסקים רציניים.",
+  alternates: {
+    canonical: "https://nuvella.co.il", // הוספתי לך את זה בשביל ה-SEO
+  },
+  openGraph: {
+    title: "נויבלה דיגיטל | פתרונות שיווק ודיגיטל",
+    description: "בניית דפי נחיתה וניהול קמפיינים מבוססי תוצאות.",
+    url: "https://nuvella.co.il",
+    siteName: "נויבלה דיגיטל",
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+    locale: "he_IL",
+    type: "website",
+  },
   icons: {
-    icon: [
-      { url: "/images/favicon.png" }, // לבדיקה רגילה
-      { url: "/images/favicon.png", sizes: "192x192", type: "image/png" }, // לגוגל חיפוש
-    ],
-    shortcut: "/images/favicon.png",
-    apple: [
-      { url: "/images/favicon.png", sizes: "180x180", type: "image/png" },
-    ],
+    icon: "/images/favicon.png",
+    apple: "/images/apple-icon.png",
   },
 };
 
@@ -38,16 +46,13 @@ export default function RootLayout({
       <body
         className={`${heebo.className} min-h-screen flex flex-col bg-white text-black antialiased`}
       >
+        {/* פה נמצאת הלוגיקה החדשה של הסקריפטים - הם ירו רק אחרי אישור */}
+        <TrackingScripts />
+
         <Header />
-
         <main className="flex-grow pt-20">{children}</main>
-
-        {/* הבאנר תופס את התחתית ומסתיר הכל */}
         <CookieBanner />
-
-        {/* האייקונים (ווטסאפ ונגישות) יופיעו פה רק אחרי אישור בבאנר */}
         <FloatingActions />
-
         <Footer />
       </body>
     </html>

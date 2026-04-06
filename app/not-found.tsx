@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "דף לא נמצא | נויבלה דיגיטל",
+  robots: { index: false },
+};
+
 import Link from "next/link";
 
 export default function NotFound() {

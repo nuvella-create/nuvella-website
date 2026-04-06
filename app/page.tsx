@@ -27,25 +27,29 @@ export default function Home() {
       id: 1,
       src: "/images/project1.png",
       title: "בוני פרגולות ומרחבי חוץ",
-      desc: "תבנית שגורמת ללקוח להבין שהוא הגיע למקצוען. דגש על תמונות חזקות ונקודות אמון שסוגרות ליד חם עוד לפני שהוא בכלל הרים טלפון.",
+      alt: "עיצוב ובניית דף נחיתה לעסק פרגולות ומרחבי חוץ - נויבלה דיגיטל",
+      desc: "תשתית שיווקית שמוכיחה מקצועיות מהשנייה הראשונה. שילוב נקי בין עבודות בשטח לבין המסרים שגורמים לאנשים להרים טלפון ולהזמין.",
     },
     {
       id: 2,
       src: "/images/project2.png",
       title: "קבלני שיפוצים וגמר",
-      desc: "תבנית שחותרת למגע. דגש על כותרת חזקה שמורידה חששות ומספרים שמראים ללקוח שהוא בידיים בטוחות, כדי שישאיר טלפון עוד לפני שיחשוב על המתחרים.",
+      alt: "דף נחיתה שיווקי לקבלן שיפוצים עם דגש על המרות - נויבלה דיגיטל",
+      desc: `דף נחיתה שמשדר רצינות וניסיון מהשנייה הראשונה. הוא חותך את כל ה"סיפורים" ומראה ללקוח בדיוק למה הוא הגיע למקום הנכון - כדי שירים את הטלפון בביטחון.`,
     },
     {
       id: 3,
       src: "/images/project3.png",
       title: "טכנאים ושירותי חירום",
-      desc: "תבנית שנבנתה כדי למכור מהירות. דגש על זמינות מיידית וקריאה בולטת לשיחה, שדואגת שלקוח לחוץ יפסיק לחפש ופשוט יחייג אליך לפני שימשיך למתחרה הבא.",
+      alt: "תשתית שיווקית ודף נחיתה לטכנאי שירותי חירום - אופטימיזציה לנייד",
+      desc: "תשתית שיווקית לענף השירותים המהירים. במקצועות שבהם כל שנייה קובעת, הדף מראה ללקוח הלחוץ בדיוק מה שהוא צריך - הבטחה לזמן הגעה וכפתור חיוג שבולט ישר בעין.",
     },
     {
       id: 4,
       src: "/images/project4.png",
       title: "חברות בנייה וניהול הנדסי",
-      desc: "תבנית שנועדה לייצר שקט נפשי אצל הלקוח. דגש על טופס לידים מפורט ונקודות אמון שמראות על סדר ומקצועיות, כדי שהגולש ירגיש בטוח לפנות אליך כבר בשלב התכנון הראשוני.",
+      alt: "מיתוג ובניית דף נחיתה לחברת ניהול הנדסי ובנייה פרטית - נויבלה",
+      desc: "דף שמוכיח ללקוח שאין פה מקום לטעויות. הוא משדר סמכות הנדסית ובונה אמון מהיר, מה שגורם לגולש להבין שזה העסק שהוא רוצה שינהל לו את הפרויקט.",
     },
   ];
 
@@ -61,14 +65,13 @@ export default function Home() {
 
   return (
     <div id="top" className="flex flex-col w-full font-heebo">
-      {/* ── HERO SECTION - אייקונים גרפיים נקיים בזהב ── */}
       {/* ── HERO SECTION ── */}
       <section className="relative w-full min-h-[600px] flex items-center justify-center overflow-hidden font-heebo py-12 md:py-20 bg-white">
         {/* תמונת רקע - דסקטופ (מופיעה רק ממסך בינוני ומעלה) */}
         <div className="hidden md:block absolute inset-0 w-full h-full z-0">
           <Image
             src="/images/img-desktop.png"
-            alt="Nuvella Background Desktop"
+            alt="נויבלה דיגיטל - פתרונות שיווק, בניית דפי נחיתה וניהול קמפיינים לעסקים"
             fill
             priority
             className="object-cover object-center"
@@ -80,7 +83,7 @@ export default function Home() {
         <div className="block md:hidden absolute inset-0 w-full h-full z-0">
           <Image
             src="/images/img-mobile.png"
-            alt="Nuvella Background Mobile"
+            alt="נויבלה דיגיטל - פתרונות שיווק, בניית דפי נחיתה וניהול קמפיינים לעסקים"
             fill
             priority
             className="object-cover object-center"
@@ -114,15 +117,15 @@ export default function Home() {
             </span>
 
             {/* השורה הזהובה - ה"שיין" מוחל כאן */}
-            <span className="block whitespace-nowrap bg-gradient-to-r from-[#A07730] via-[#E7C58A] to-[#A07730] bg-clip-text text-transparent animate-shimmer bg-[length:200%_auto] font-black">
-              לחודש עבודה ללא עלות
+            <span className="block whitespace-nowrap bg-gradient-to-r from-[#A07730] via-[#E7C58A] to-[#A07730] bg-clip-text text-transparent animate-gold-breath font-black">
+              לחודש התנסות ללא דמי ניהול
             </span>
           </h1>
 
           {/* הפסקה השיווקית */}
           <p className="text-[15px] md:text-xl text-[#1A1A1A] max-w-[320px] md:max-w-3xl mx-auto mb-8 md:mb-12 font-bold leading-relaxed text-center text-balance bg-white/10 backdrop-blur-[2px] rounded-lg p-2">
-            אני בונה לך דף נחיתה מקצועי, מריץ פרסום ממוקד ומכניס לך לידים
-            איכותיים במשך חודש שלם, ללא עלות כלל.
+            הקמת דף נחיתה, קמפיין ממוקד והזרמת פניות איכותיות למשך חודש - ללא
+            דמי ניהול. המטרה? שתראה תוצאות ונעבור לעבודה קבועה.
           </p>
 
           {/* הכפתורים */}
@@ -183,7 +186,7 @@ export default function Home() {
                 <rect width="20" height="14" x="2" y="5" rx="2" />
                 <line x1="2" y1="10" x2="22" y2="10" />
               </svg>
-              <span>ללא כרטיס אשראי</span>
+              <span>אפס דמי ניהול</span>
             </div>
             <span className="opacity-20 text-black">|</span>
             <div className="flex items-center gap-1 shrink-0">
@@ -200,7 +203,7 @@ export default function Home() {
                 <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
                 <polyline points="14 2 14 8 20 8" />
               </svg>
-              <span>ללא חוזה מחייב</span>
+              <span>בלי התחייבות</span>
             </div>
             <span className="opacity-20 text-black">|</span>
             <div className="flex items-center gap-1 shrink-0">
@@ -217,11 +220,13 @@ export default function Home() {
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                 <polyline points="22 4 12 14.01 9 11.01" />
               </svg>
-              <span>עצירה בכל רגע</span>
+              <span>שקיפות מלאה</span>
             </div>
           </div>
         </div>
 
+        {/* שכבת מעבר חלקה מהלמעלה (Header) */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-[2]" />
         {/* שכבת מעבר חלקה לסקשן הבא */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F9F9F9] to-transparent z-[2]" />
       </section>
@@ -241,7 +246,7 @@ export default function Home() {
 
               <div className="relative inline-block w-full">
                 <h2 className="text-[20px] md:text-[32px] font-black text-[#1A1A1A] leading-tight md:whitespace-nowrap tracking-tighter">
-                  מפה לאוזן זה מעולה - אבל זו לא אסטרטגיה, זה הימור.
+                  המלצות זה נהדר. אבל זו לא אסטרטגיה - זה הימור.
                 </h2>
                 <div className="absolute -bottom-3 right-0 w-12 h-[2.5px] bg-[#A07730]"></div>
               </div>
@@ -250,33 +255,33 @@ export default function Home() {
             {/* גוף הטקסט - מרווחים מהודקים לקריאה מהירה */}
             <div className="text-[15px] md:text-[17px] text-[#4A4A4A] leading-relaxed space-y-5 text-right">
               <p>
-                המלצות זה הבסיס של כל עסק, אבל כולם מכירים את{" "}
-                <span className="text-[#1A1A1A] font-bold">החודש השקט</span>{" "}
-                שהטלפון פתאום לא מצלצל.
+                המלצות זה הבסיס של כל עסק, אבל בוא נודה באמת: זה "ברז" שאי אפשר
+                לשלוט בו.
               </p>
 
               {/* נקודות הכאב */}
-              <div className="space-y-3 pr-1">
-                <p>
-                  - הלחץ מתחיל, ואתה מוצא את עצמך{" "}
-                  <span className="font-bold">מגלח מהמחיר</span> רק כדי לסגור
-                  עוד עבודה.
+              <div className="space-y-4 pr-1">
+                <p className="leading-relaxed">
+                  - חודש אחד אתה בשיא, וחודש אחריו{" "}
+                  <span className="font-bold">הטלפון פשוט שותק</span> - בלי שום
+                  יכולת לצפות מה יקרה מחר.
                 </p>
-                <p>
-                  - מפה לאוזן זה לא "ברז" - אי אפשר לפתוח כשרוצים עוד עבודה,
-                  ולסגור כשיש עומס.
+                <p className="leading-relaxed">
+                  - אי אפשר "לפתוח" כשחסרה עבודה או "לסגור" כשעמוס - זה לא ניהול
+                  עסק,{" "}
+                  <span className="font-bold text-[#1A1A1A]">זו הישרדות.</span>
                 </p>
-                <p>
-                  - בזמן שאתה מחכה שמישהו ימליץ עליך, הלקוחות מחפשים בגוגל
-                  וסוגרים עם{" "}
-                  <span className="text-[#1A1A1A] font-bold">המתחרה שלך</span>.
+                <p className="leading-relaxed">
+                  - בזמן שאתה בונה על המלצות, הלקוחות כבר{" "}
+                  <span className="font-bold">מחפשים בגוגל</span> וסוגרים אצל
+                  המתחרה שלך.
                 </p>
               </div>
 
-              <p className="font-medium italic text-[14px] md:text-[16px]">
-                זה לא כי הוא איש מקצוע טוב ממך - זה נטו כי{" "}
+              <p className="font-medium italic text-[15px] md:text-[17px] mt-8 border-r-2 border-[#A07730] pr-3 py-1">
+                זה לא כי הוא איש מקצוע טוב ממך - זה פשוט כי{" "}
                 <span className="text-[#1A1A1A] font-bold">
-                  הוא היה שם ואתה לא.
+                  הוא דאג להופיע להם מול העיניים.
                 </span>
               </p>
 
@@ -312,7 +317,7 @@ export default function Home() {
 
               <div className="relative inline-block w-full">
                 <h2 className="text-[20px] md:text-[32px] font-black text-[#1A1A1A] leading-tight md:whitespace-nowrap tracking-tighter">
-                  מה אני מציע בעצם?
+                  איך נביא לך תוצאות?
                 </h2>
                 <div className="absolute -bottom-3 right-0 w-12 h-[2.5px] bg-[#A07730]"></div>
               </div>
@@ -333,9 +338,8 @@ export default function Home() {
                     קודם כל נדבר
                   </h3>
                   <p className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed">
-                    זום קצר של 20 דקות שבו אני מסביר לך בדיוק מה אני עושה ואיך,
-                    ואתה שואל כל מה שצריך, ואנחנו מחליטים ביחד אם זה מתאים
-                    לשנינו, בלי לחץ ובלי מחויבות.
+                    שיחת זום ממוקדת של 20 דקות - נבין בדיוק מי הקהל שלך, איך
+                    להשיג אותו ונתאם ציפיות בלי לחץ ובלי מחויבות.
                   </p>
                 </div>
               </div>
@@ -350,11 +354,12 @@ export default function Home() {
                 </div>
                 <div className="pt-0.5">
                   <h3 className="text-[#1A1A1A] font-bold text-[16px] md:text-[18px] mb-1">
-                    אני נכנס לעבודה
+                    הקמת התשתית
                   </h3>
                   <p className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed">
-                    אני לומד את העסק שלך, בונה דף נחיתה שמייצג אותך נכון, ומכין
-                    קמפיין שמגיע בדיוק לאנשים שצריכים אותך.
+                    אני לומד את העסק שלך, בונה דף נחיתה שמייצג אותך נכון ומקים
+                    קמפיין שפוגע בול במי שצריך אותך עכשיו - הכל מוכן לעבודה תוך
+                    כמה ימים.
                   </p>
                 </div>
               </div>
@@ -366,11 +371,11 @@ export default function Home() {
                 </div>
                 <div className="pt-0.5">
                   <h3 className="text-[#1A1A1A] font-bold text-[16px] md:text-[18px] mb-1">
-                    יוצאים לאוויר
+                    ניהול ודיוק ביצועים
                   </h3>
                   <p className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed">
-                    הקמפיין רץ, אני עוקב ומייעל, ואתה רואה פניות נכנסות בזמן
-                    שאתה עוסק בעבודה שלך.
+                    הקמפיין באוויר ואני דואג לניהול השוטף ולהזרמת פניות
+                    רלוונטיות בזמן שאתה פשוט עוסק בעבודה שלך.
                   </p>
                 </div>
               </div>
@@ -380,11 +385,11 @@ export default function Home() {
             <div className="mt-12 space-y-5 text-right">
               <div className="p-5 bg-[#F9F9F7] rounded-xl border-r-4 border-[#A07730] shadow-sm">
                 <p className="text-[16px] md:text-[18px] font-black text-[#1A1A1A] leading-tight mb-2">
-                  חודש ראשון ללא עלות.
+                  חודש ראשון ללא דמי ניהול.
                 </p>
                 <p className="text-[13px] md:text-[15px] text-[#4A4A4A] leading-relaxed font-medium">
-                  אני משקיע את הזמן והעבודה שלי - כי אני יודע שכשתראה תוצאות,
-                  תרצה להמשיך.
+                  אני משקיע את הזמן והעבודה שלי - כי אני בטוח שאחרי שתראה
+                  תוצאות, תרצה להמשיך.
                 </p>
               </div>
 
@@ -455,13 +460,20 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col">
                   <h3 className="text-lg md:text-xl font-bold text-[#1A1A1A] mb-1.5">
-                    בן 18, וזה היתרון הכי גדול שלך במגרש הזה.
+                    דיגיטל זה שפת האם שלי
                   </h3>
                   <p className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed">
-                    אני חי קוד, עיצוב ושיווק מאז שאני זוכר את עצמי – לא כי קראתי
-                    על זה בספר, אלא כי גדלתי לתוך הטכנולוגיה הזו. אני מביא את
-                    השליטה המוחלטת בכלים הכי חדים של היום, כדי לבנות לך תשתית
-                    שעובדת.
+                    מעבר לפרסום בפייסבוק וגוגל, אני בונה{" "}
+                    <span className="font-bold text-[#1A1A1A]">
+                      דפי נחיתה שיודעים למכור באמת.
+                    </span>{" "}
+                    אני לא רק "מעלה מודעה" - אני מבין איך הלקוח חושב ואיך לגרום
+                    לו לעצור ולהשאיר פרטים. נולדתי לתוך הכלים האלה, ואני מביא
+                    לעסק שלך{" "}
+                    <span className="font-bold text-[#1A1A1A]">
+                      שליטה בטכנולוגיה הכי מעודכנת
+                    </span>{" "}
+                    שיש היום בטבעיות ובביטחון.
                   </p>
                 </div>
               </div>
@@ -484,14 +496,24 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col">
                   <h3 className="text-lg md:text-xl font-bold text-[#1A1A1A] mb-1.5">
-                    ראיתי איך בעלי עסקים נופלים.
+                    ההצלחה שלך היא האינטרס שלי
                   </h3>
-                  <p className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed">
-                    עבדתי תקופה ארוכה בסוכנות שיווק מוכרת וראיתי מקרוב עסקים
-                    קטנים קורסים. לא כי העבודה שלהם בשטח לא טובה, אלא כי התשתית
-                    הדיגיטלית שלהם הייתה פח. וזה בדיוק מה שגרם לי להקים את
-                    Nuvella.
-                  </p>
+                  <div className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed space-y-3">
+                    <p>
+                      אני בונה עכשיו את המוניטין שלי, ולכן אני מושקע בעסק שלך{" "}
+                      <span className="font-bold text-[#1A1A1A]">
+                        הרבה יותר מכל סוכנות גדולה.
+                      </span>{" "}
+                      כל שקל מתקציב הקמפיין שלך{" "}
+                      <span className="font-bold text-[#1A1A1A]">
+                        חשוב לי כאילו הוא שלי.
+                      </span>
+                    </p>
+                    <p>
+                      העבודה שלי היא להזרים לך פניות חמות לטלפון - כדי שאתה תוכל
+                      לסגור את העסקאות ולראות שהמערכת עובדת.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -513,21 +535,28 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col">
                   <h3 className="text-lg md:text-xl font-bold text-[#1A1A1A] mb-1.5">
-                    אני לא מוכר אשליות, אני בונה תיק עבודות.
+                    המספרים ידברו בעד עצמם
                   </h3>
                   <p className="text-[14px] md:text-[16px] text-[#4A4A4A] leading-relaxed">
-                    מי שמבטיח לך תוצאות ודאיות מחר בבוקר - משקר. מה שאני כן יכול
-                    להבטיח זה את האינטרס שלי: אני פורץ עכשיו לשוק ובונה תיק
-                    עבודות. בעוד שסוכנויות אחרות גובות מינימום 2,000 ש”ח דמי
-                    ניהול חודשיים, אני מציע את החודש הראשון ללא עלות בכלל. כדי
-                    שהשם שלי יגדל, אני חייב שהעסק שלך ירוויח בזכותי.
+                    אני לא מאמין במושגים שיווקיים מורכבים. שיווק טוב נמדד בדבר
+                    אחד:{" "}
+                    <span className="font-bold text-[#1A1A1A]">
+                      לקוחות רלוונטיים שפונים אליך.
+                    </span>{" "}
+                    אני מציע{" "}
+                    <span className="font-bold text-[#1A1A1A]">
+                      חודש התנסות ללא דמי ניהול
+                    </span>{" "}
+                    כדי שתוכל לראות את התוצאות בעין לפני שאתה מחליט אם להמשיך.
+                    פשוט, שקוף ובלי התחייבות מראש.
                   </p>
                 </div>
               </div>
             </div>
 
-            <p className="text-lg md:text-xl font-bold text-[#1A1A1A] leading-snug mt-12 text-right">
-              בוא נדבר - תשאל אותי כל מה שצריך, ונראה ביחד אם זה מתאים לשנינו.
+            <p className="text-[16px] md:text-xl font-bold text-[#1A1A1A] leading-snug mt-12 text-right tracking-tight">
+              בוא נדבר - שיחה קצרה שתעזור לנו להבין אם הפתרון שלי הוא מה שהעסק
+              שלך צריך כרגע.
             </p>
           </div>
 
@@ -536,7 +565,7 @@ export default function Home() {
             <div className="relative animate-bob w-[280px] md:w-full max-w-[360px]">
               <Image
                 src="/images/me.png"
-                alt="איתי דור - Nuvella"
+                alt="איתי דור - מומחה לבניית דפי נחיתה ושיווק דיגיטלי, מייסד נויבלה דיגיטל"
                 width={400}
                 height={500}
                 className="profile-mask object-cover"
@@ -571,15 +600,25 @@ export default function Home() {
 
             <div className="text-[16px] md:text-[18px] text-[#4A4A4A] leading-relaxed space-y-6">
               <p>
-                זה לא מקרה. העובדה שאתה פה מוכיחה שהפרסום שלי{" "}
-                <span className="font-bold text-[#1A1A1A] border-b-2 border-[#A07730]">
-                  פוגע בול
+                <span className="font-bold text-[#1A1A1A]">
+                  העובדה שאתה קורא את זה עכשיו היא ההוכחה הכי טובה שלי.
                 </span>
-                .
               </p>
-              <p>כמו שהבאתי אותך לכאן - ככה אני אטרגט את הלקוחות שלך.</p>
+              <p>
+                זה לא מקרה. ידעתי בדיוק למי לכוון את המודעה כדי שהיא תופיע לך
+                בטלפון ותביא אותך לפה. באותה רמת דיוק אני אדאג שהלקוחות שלך יראו
+                אותך - בדיוק כשהם צריכים אותך.
+              </p>
               <p className="font-black text-[#1A1A1A] text-xl">
-                אבל קליקים לא שווים כסף בלי דף נחיתה שמשדר אמינות.
+                אבל קליקים הם רק חצי מהעבודה.
+              </p>
+              <p>
+                להביא אנשים לדף זה קל, אבל בלי דף נחיתה שמשדר סמכות ויודע לסגור
+                -{" "}
+                <span className="font-bold text-[#1A1A1A] border-b-2 border-[#A07730]">
+                  הכסף של הקמפיין פשוט נזרק לפח.
+                </span>{" "}
+                קליק שלא הופך לפנייה הוא בזבוז של תקציב.
               </p>
               <p className="text-[#A07730] font-bold">
                 ככה נראות התשתיות שאני בונה:
@@ -608,7 +647,7 @@ export default function Home() {
               >
                 <Image
                   src={projects[1].src}
-                  alt="P2"
+                  alt={projects[1].alt}
                   fill
                   className="object-contain"
                   quality={100}
@@ -631,7 +670,7 @@ export default function Home() {
               >
                 <Image
                   src={projects[0].src}
-                  alt="P1"
+                  alt={projects[0].alt}
                   fill
                   className="object-cover"
                 />
@@ -653,7 +692,7 @@ export default function Home() {
               >
                 <Image
                   src={projects[2].src}
-                  alt="P3"
+                  alt={projects[2].alt}
                   fill
                   className="object-cover"
                 />
@@ -675,7 +714,7 @@ export default function Home() {
               >
                 <Image
                   src={projects[3].src}
-                  alt="P4"
+                  alt={projects[3].alt}
                   fill
                   className="object-cover"
                 />
@@ -701,16 +740,16 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-[#1A1A1A] font-black text-2xl mb-3">
-                  הפרויקט שלך?
+                  התבנית שלך?
                 </h3>
 
                 <p className="text-[#4A4A4A] text-[15px] leading-relaxed mb-4 font-medium px-4">
-                  התבנית הזו כרגע חסרה, אבל היא יכולה להיות המכונה שמביאה לך
-                  לקוחות כל בוקר.
+                  התבנית הזו ריקה, אבל היא יכולה להפוך לתשתית שמביאה לעסק שלך
+                  לקוחות חדשים בכל יום.
                 </p>
 
                 <p className="text-[#A07730] text-sm font-black uppercase tracking-tight border-b-2 border-[#A07730]/20 group-hover:border-[#A07730] transition-colors">
-                  לחץ כאן ונשריין לך מקום
+                  לחץ כאן לתיאום שיחה קצרה
                 </p>
               </Link>
             </div>
@@ -740,18 +779,28 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="text-[14px] text-[#4A4A4A] leading-[1.4] space-y-2">
+          <div className="text-[14px] text-[#4A4A4A] leading-[1.5] space-y-4">
             <p>
-              זה לא מקרה. העובדה שאתה פה מוכיחה שהפרסום שלי{" "}
-              <span className="font-bold text-[#1A1A1A] border-b border-[#A07730]">
-                פוגע בול
+              <span className="font-bold text-[#1A1A1A]">
+                העובדה שאתה קורא את זה עכשיו היא ההוכחה הכי טובה שלי.
               </span>
-              . כמו שהבאתי אותך לכאן - ככה אביא לך את הלקוחות שצריכים אותך.
             </p>
-            <p className="font-bold text-[#1A1A1A]">
-              אבל קליקים לא שווים שקל בלי דף נחיתה שמשדר אמינות.
+            <p>
+              זה לא מקרה. ידעתי בדיוק למי לכוון את המודעה כדי שתביא אותך לפה.
+              באותה רמת דיוק אני אדאג שהלקוחות שלך יראו אותך - בדיוק כשהם צריכים
+              אותך.
             </p>
-            <p className="text-[#4A4A4A] font-bold text-[13px] tracking-tight pt-1">
+            <p>
+              <span className="font-bold text-[#1A1A1A]">
+                אבל קליקים הם רק חצי מהעבודה.
+              </span>{" "}
+              בלי דף נחיתה שמשדר סמכות ויודע לסגור -{" "}
+              <span className="font-bold text-[#1A1A1A] border-b border-[#A07730]">
+                הכסף של הקמפיין פשוט נזרק לפח.
+              </span>{" "}
+              קליק שלא הופך לפנייה הוא בזבוז של תקציב.
+            </p>
+            <p className="text-[#1A1A1A] font-bold text-[13px] tracking-tight pt-1">
               ככה נראות התשתיות שאני בונה:
             </p>
           </div>
@@ -774,7 +823,7 @@ export default function Home() {
               >
                 <Image
                   src={p.src}
-                  alt={p.title}
+                  alt={p.alt}
                   fill
                   className={p.id === 2 ? "object-contain p-2" : "object-cover"}
                 />
@@ -789,11 +838,11 @@ export default function Home() {
             className="cursor-pointer active:scale-[0.99] transition-transform"
           >
             <h3 className="text-[#1A1A1A] font-black text-lg mb-2 text-right">
-              הפרויקט שלך?
+              התבנית שלך?
             </h3>
             <p className="text-[#4A4A4A] text-[14px] mb-4 leading-relaxed text-right">
-              התבנית הזו כרגע חסרה, אבל היא יכולה להיות המכונה שמביאה לך לקוחות
-              כל בוקר.
+              התבנית הזו ריקה, אבל היא יכולה להפוך לתשתית שמביאה לעסק שלך לקוחות
+              חדשים בכל יום.
             </p>
 
             <div className="relative aspect-video rounded-xl border-4 border-dashed border-[#A07730]/30 bg-[#FAF5EB] flex flex-col items-center justify-center text-center p-8 shadow-sm">
@@ -803,18 +852,26 @@ export default function Home() {
                   זה המקום שלך לצמוח
                 </span>
                 <span className="text-[#A07730] font-black text-base underline underline-offset-4 tracking-tight">
-                  לחץ כאן ונשריין לך מקום
+                  לחץ כאן לתיאום שיחה קצרה
                 </span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* כפתור ראה עוד עבודות */}
+        {/* נקודת עוגן לחזרה חכמה - גובה 0 כדי לא להוסיף רווח */}
+        <div id="more-work-anchor" className="h-0 w-full"></div>
+
+        {/* אזור כפתור ראה עוד - מרווח הדוק יותר */}
         {!showMore && (
-          <button onClick={() => setShowMore(true)} className="minimal-btn">
-            ראה עוד עבודות
-          </button>
+          <div className="flex justify-center mt-8">
+            <button
+              onClick={() => setShowMore(true)}
+              className="text-[#A07730] font-black text-[11px] uppercase tracking-[0.2em] border-b border-[#A07730] pb-0.5 active:opacity-60 transition-all"
+            >
+              ראה עוד עבודות
+            </button>
+          </div>
         )}
 
         {/* עבודות נוספות בטעינה */}
@@ -825,7 +882,8 @@ export default function Home() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="space-y-12 pt-10"
+                /* mt-10 מייצר רווח זהה בדיוק לרווח שבין הפרויקטים הקודמים (space-y-10) */
+                className="space-y-10 mt-10"
               >
                 {projects.slice(2, 4).map((p) => (
                   <div key={p.id}>
@@ -841,7 +899,7 @@ export default function Home() {
                     >
                       <Image
                         src={p.src}
-                        alt={p.title}
+                        alt={p.alt}
                         fill
                         className="object-cover"
                       />
@@ -849,17 +907,26 @@ export default function Home() {
                   </div>
                 ))}
 
-                <button
-                  onClick={() => {
-                    setShowMore(false);
-                    document
-                      .getElementById("portfolio-mobile")
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="minimal-btn"
-                >
-                  ראה פחות
-                </button>
+                {/* כפתור ראה פחות - גלילה חכמה ל-25% מהתחתית */}
+                <div className="flex justify-center py-2">
+                  <button
+                    onClick={() => {
+                      setShowMore(false);
+                      setTimeout(() => {
+                        const anchor =
+                          document.getElementById("more-work-anchor");
+                        if (anchor) {
+                          const targetY =
+                            anchor.offsetTop - window.innerHeight * 0.75;
+                          window.scrollTo({ top: targetY, behavior: "smooth" });
+                        }
+                      }, 50);
+                    }}
+                    className="text-[#A07730] font-black text-[11px] uppercase tracking-[0.2em] border-b border-[#A07730] pb-0.5 active:opacity-60 transition-all"
+                  >
+                    ראה פחות
+                  </button>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -909,16 +976,18 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl md:text-2xl font-black text-[#1A1A1A] mb-4">
-                אופציה א' - נפרדים כידידים
+                אופציה א' - סיום התקשרות
               </h3>
               <p className="text-[#4A4A4A] text-[15px] mb-6 leading-relaxed">
-                אם החלטת שזה לא בשבילך, או שהרגשת שזה לא נתן לך את הערך שציפית
-                לו - הכל טוב.
+                אם הגענו למסקנה שהשירות שלי הוא לא המענה המדויק שהעסק שלך צריך
+                כרגע - אנחנו פשוט עוצרים.
               </p>
               <ul className="space-y-3 text-[14px] md:text-[15px] text-[#1A1A1A] font-medium opacity-90 mt-auto">
-                <li>- לא קרה כלום, נפרדים בלי משקעים.</li>
-                <li>- הדף יורד מהאוויר ואין לך שום התחייבות.</li>
-                <li>- לא שילמת דמי ניהול ולא הפסדת שקל.</li>
+                <li>- דף הנחיתה יורד מהאוויר ואין לך שום התחייבות כלפיי.</li>
+                <li>
+                  - חודש הניסיון היה ללא דמי ניהול - ניהול הסיכונים היה עליי.
+                </li>
+                <li>- מסיימים את ההתקשרות בצורה מקצועית ועניינית.</li>
               </ul>
             </div>
 
@@ -946,11 +1015,11 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl md:text-2xl font-black text-white mb-4">
-                אופציה ב' - הופכים לקבוע
+                אופציה ב' - מסלול קבוע
               </h3>
               <p className="text-gray-400 text-[15px] mb-6 leading-relaxed">
-                אם החלטת שהשיטה הזו עובדת בשבילך ואתה רוצה להמשיך לצמוח יחד, זה
-                המודל שלנו:
+                אם ראית שהמערכת עובדת ואתה רוצה להפוך אותה לחלק קבוע מהעסק שלך -
+                זה המודל:
               </p>
 
               <div className="mb-6">
@@ -961,7 +1030,7 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="text-gray-400 text-xs">
-                  והאתר עובר לבעלותך המלאה (עיצוב + קוד)
+                  העברת בעלות מלאה על התשתית (עיצוב + קוד).
                 </p>
               </div>
 
@@ -971,10 +1040,10 @@ export default function Home() {
                 <li className="text-[#A07730] font-bold mb-2">
                   500 ₪ ריטיינר חודשי שכולל:
                 </li>
-                <li>- ניהול קמפיין פייסבוק/אינסטגרם שוטף.</li>
-                <li>- הכנת קריאייטיבים (עיצוב מודעות וטקסטים).</li>
-                <li>- קניית דומיין אישי ואחסון פרימיום.</li>
-                <li>- תחזוקה ושינויי תוכן לפי הצורך.</li>
+                <li>- ניהול ואופטימיזציה של הקמפיין הממומן.</li>
+                <li>- ריענון קריאייטיבים ומודעות לשיפור ביצועים.</li>
+                <li>- אחסון, דומיין וניהול טכני שוטף.</li>
+                <li>- תחזוקה שוטפת של האתר ועדכוני תוכן קלים.</li>
               </ul>
             </div>
           </div>
@@ -1045,8 +1114,13 @@ export default function Home() {
                   setIsPending(false);
                   setStatus(result);
 
-                  // מאפס רק אם הכל עבר חלק
+                  // מאפס ומדווח המרה רק אם הכל עבר חלק
                   if (result?.success === true) {
+                    // דיווח לפייסבוק על ליד חדש (Lead Event)
+                    if (typeof window !== "undefined" && (window as any).fbq) {
+                      (window as any).fbq("track", "Lead");
+                    }
+
                     e.currentTarget.reset();
                   }
                 }}
@@ -1176,19 +1250,6 @@ export default function Home() {
               </form>
             )}
           </div>
-
-          {/* צ'קליסט תחתון */}
-          <div className="mt-8 flex flex-nowrap justify-center gap-4 md:gap-10 border-t border-gray-200/50 pt-5">
-            <div className="flex items-center gap-1 text-[10px] md:text-[13px] font-bold text-[#4A4A4A] whitespace-nowrap">
-              <span className="text-[#A07730]">✓</span> חודש ראשון חינם
-            </div>
-            <div className="flex items-center gap-1 text-[10px] md:text-[13px] font-bold text-[#4A4A4A] whitespace-nowrap">
-              <span className="text-[#A07730]">✓</span> ללא אשראי
-            </div>
-            <div className="flex items-center gap-1 text-[10px] md:text-[13px] font-bold text-[#4A4A4A] whitespace-nowrap">
-              <span className="text-[#A07730]">✓</span> עצירה בכל עת
-            </div>
-          </div>
         </div>
       </section>
 
@@ -1211,7 +1272,7 @@ export default function Home() {
             >
               <Image
                 src={selectedImg}
-                alt="Preview"
+                alt="תצוגת פרויקט נבחר - נויבלה דיגיטל פתרונות שיווק"
                 fill
                 className="object-contain"
                 quality={100}

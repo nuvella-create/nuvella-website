@@ -14,7 +14,7 @@ const Header = () => {
         >
           <Image
             src="/images/hero-1.png"
-            alt="Nuvella Digital"
+            alt="נויבלה דיגיטל - בניית דפי נחיתה ושיווק מבוסס תוצאות"
             width={90}
             height={40}
             className="object-contain object-right"

@@ -9,7 +9,7 @@ const Footer = () => {
         <Link href="/#top" className="transition-transform hover:scale-105">
           <Image
             src="/images/hero-2.png"
-            alt="Nuvella Digital"
+            alt="Nuvella Digital - ניהול קמפיינים ממומנים, בניית דפי נחיתה ופתרונות שיווק לעסקים"
             width={180}
             height={65}
             className="object-contain"

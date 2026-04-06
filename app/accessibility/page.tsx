@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "הצהרת נגישות | Nuvella Digital",
+  title: "הצהרת נגישות | נויבלה דיגיטל",
   description:
-    "Nuvella Digital מחויבת להנגשת שירותיה לכלל האוכלוסייה. קראו את הצהרת הנגישות שלנו.",
+    "נויבלה דיגיטל מחויבת להנגשת שירותיה לכלל האוכלוסייה. קראו את הצהרת הנגישות הרשמית שלנו.",
 };
 
 interface AccessibilitySection {
@@ -19,32 +19,37 @@ export default function AccessibilityPage() {
       id: 1,
       title: "מבוא",
       content:
-        'אנו משקיעים מאמצים ומשאבים רבים בהפיכת אתר זה לנגיש ונוח לשימוש עבור אנשים עם מוגבלות. הנגשת האתר בוצעה בהתאם לתקן הישראלי (ת"י 5568) והנחיות הנגישות הבינלאומיות ברמה AA, במידת האפשר.',
+        'אנו רואים חשיבות עליונה במתן שירות שוויוני לכלל הגולשים ומשקיעים משאבים רבים בהנגשת האתר. מטרתנו היא לאפשר לאנשים עם מוגבלות גלישה נוחה ועצמאית. האתר הונגש בהתאם לתקן הישראלי (ת"י 5568) ובהתאם להנחיות הנגישות הבינלאומיות ברמה AA.',
     },
     {
       id: 2,
       title: "התאמות הנגישות באתר",
-      content: "להלן רשימת ההתאמות המרכזיות שביצענו:",
+      content: "להלן הפעולות המרכזיות שבוצעו לצורך הנגשת האתר:",
       list: [
-        "ניווט באמצעות מקלדת באופן מלא.",
-        "תמיכה בתוכנות קורא מסך נפוצות.",
-        "אפשרות לשינוי גודל הגופן ושמירה על מבנה האתר.",
-        "ניגודיות צבעים תקינה ועמידה בסטנדרטים.",
-        "תגיות Alt לכל התמונות המשמעותיות באתר.",
-        "מבנה האתר רספונסיבי ומותאם למכשירים ניידים וטאבלטים.",
+        "התקנת רכיב נגישות (אייקון) המאפשר שליטה על גודל הגופן, ניגודיות צבעים והדגשת קישורים.",
+        "התאמה מלאה לניווט באמצעות מקלדת (ללא שימוש בעכבר).",
+        "תמיכה בתוכנות קורא מסך נפוצות עבור עיוורים וכבדי ראייה.",
+        "שימוש בתגיות Alt לכל התמונות המשמעותיות באתר.",
+        "מבנה אתר רספונסיבי המותאם לגלישה מניידים וטאבלטים.",
+        "כתיבת קוד סמנטי ושמירה על היררכיית כותרות תקינה.",
       ],
     },
     {
       id: 3,
       title: "פטורים והחרגות",
       content:
-        "בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות, ובהתחשב בהיות העסק עסק קטן, קיימים פטורים מסוימים מהנגשה מלאה. עם זאת, אנו עושים כמיטב יכולתנו להנגיש את התוכן המרכזי באתר.",
+        "האתר מונגש ברמת סבירות מקסימלית ובהתאם ליכולות הטכנולוגיות הקיימות. בשל היות העסק עסק קטן ודיגיטלי, קיימים פטורים מסוימים מהנגשה מלאה על פי חוק (תקנה 35), אך אנו עושים כמיטב יכולתנו להנגיש את כלל התוכן המרכזי.",
+    },
+    {
+      id: 4,
+      title: "נגישות פיזית",
+      content:
+        "Nuvella Digital היא סוכנות שיווק דיגיטלית הפועלת מרחוק. העסק אינו מקבל קהל בכתובת פיזית וכל השירותים ניתנים באמצעים טכנולוגיים, טלפוניים ודיגיטליים בלבד.",
     },
   ];
 
   return (
     <div className="bg-[#FAF5EB] min-h-screen">
-      {/* Hero Section */}
       <section className="bg-[#1A1A1A] pt-32 pb-16 px-6 text-center border-b-4 border-[#A07730]">
         <p className="text-[#A07730] font-bold text-xs tracking-widest uppercase mb-3">
           מסמך רשמי
@@ -53,12 +58,11 @@ export default function AccessibilityPage() {
           הצהרת נגישות
         </h1>
         <p className="text-white/60 text-sm max-w-xl mx-auto leading-relaxed font-medium">
-          Nuvella Digital רואה חשיבות עליונה בהנגשת שירותיה לכלל האוכלוסייה, תוך
-          מתן כבוד ועצמאות לאנשים עם מוגבלויות.
+          Nuvella Digital פועלת לקידום הנגישות הדיגיטלית מתוך הבנה כי לכל אדם
+          זכות לחיות בשוויון, כבוד ועצמאות.
         </p>
       </section>
 
-      {/* Content Section */}
       <main className="max-w-4xl mx-auto px-6 py-16">
         <div className="space-y-6">
           {sections.map((section) => (
@@ -93,36 +97,35 @@ export default function AccessibilityPage() {
             </div>
           ))}
 
-          {/* Contact Section */}
           <div className="bg-white border border-[#E5E5E0] rounded-2xl p-8 shadow-sm">
             <div className="flex items-center gap-4 mb-5">
               <div className="w-10 h-10 rounded-xl bg-[#FAF5EB] border border-[#E8D5A8] flex items-center justify-center text-[#A07730] font-black text-lg shrink-0">
-                4
+                5
               </div>
               <h2 className="text-xl font-extrabold text-[#1A1A1A]">
                 דרכי פנייה ורכז נגישות
               </h2>
             </div>
             <p className="text-[#666666] leading-relaxed mb-6 font-medium">
-              נתקלתם בבעיית נגישות באתר? אנחנו כאן כדי לעזור ולתקן. ניתן לפנות
-              לרכז הנגישות שלנו:
+              אם נתקלתם בקושי בגלישה או ברכיב שאינו מונגש, נשמח שתפנו אלינו כדי
+              שנוכל לתקן ולשפר את חוויית השימוש עבורכם:
             </p>
             <div className="bg-[#FAF5EB]/50 p-6 rounded-xl border border-[#E8D5A8] space-y-3">
               <p className="text-sm text-[#1A1A1A]">
-                <strong>שם רכז הנגישות:</strong> איתי דור
+                <strong>רכז נגישות:</strong> איתי דור
               </p>
               <p className="text-sm text-[#1A1A1A]">
-                <strong>טלפון/וואטסאפ:</strong>{" "}
+                <strong>טלפון / וואטסאפ:</strong>{" "}
                 <a
                   href="tel:0526052579"
                   dir="ltr"
                   className="hover:text-[#A07730] transition-colors"
                 >
-                  052-605-2579
+                  052-6052579
                 </a>
               </p>
               <p className="text-sm text-[#1A1A1A]">
-                <strong>מייל:</strong>{" "}
+                <strong>דוא"ל:</strong>{" "}
                 <a
                   href="mailto:office@nuvella.co.il"
                   className="hover:text-[#A07730] transition-colors"
@@ -134,7 +137,7 @@ export default function AccessibilityPage() {
           </div>
 
           <div className="text-center text-[#666666] text-xs pt-4 font-medium">
-            הצהרת הנגישות עודכנה לאחרונה בתאריך: <strong>19 במרץ 2026</strong>
+            הצהרת הנגישות עודכנה לאחרונה בתאריך: <strong>5 באפריל 2026</strong>
           </div>
         </div>
       </main>

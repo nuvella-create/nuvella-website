@@ -106,18 +106,21 @@ body.a11y-highlight-headers h3 {
 }
 
 /* --- global.css - סקשן 1 (כותרת מבריקה) --- */
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
+@keyframes gold-breath {
+  0%,
   100% {
-    background-position: 200% 0;
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: 100% 50%;
   }
 }
 
-.animate-shimmer {
-  background-size: 200% auto;
-  animation: shimmer 4s linear infinite;
+.animate-gold-breath {
+  /* תנועה איטית מאוד וחלקה */
+  animation: gold-breath 6s ease-in-out infinite;
 }
 
 /* --- global.css - סקשן 4 (מעודכן עם טשטוש מוגבר בתחתית) --- */

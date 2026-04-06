@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AccessibilityWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -115,15 +116,21 @@ export default function AccessibilityWidget() {
 
   return (
     <div className="a11y-widget-root">
-      {/* כפתור קטן ונקי - ללא אנימציה */}
+      {/* לשונית נגישות - גובה מהודק לדסקטופ לצמצום רווחים */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-[100px] left-[33px] z-[9999] w-10 h-10 bg-[#A07730] hover:bg-[#8A6425] rounded-full flex items-center justify-center shadow-md transition-transform active:scale-90"
+        /* מובייל: h-10 (40px) | מחשב: הופחת מ-h-16 ל-h-12 (48px) למראה הדוק */
+        className="fixed bottom-[120px] left-0 z-[9999] w-7 h-10 lg:w-9 lg:h-12 bg-[#A07730] hover:bg-[#8A6425] hover:w-9 lg:hover:w-11 rounded-r-xl flex items-center justify-center shadow-lg transition-all duration-300 active:scale-90 group"
         aria-label="נגישות"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
-          <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" />
-        </svg>
+        <div className="relative w-5 h-5 lg:w-6 lg:h-6">
+          <Image
+            src="/images/accessibility-icon.png"
+            alt="פתיחת תפריט נגישות - נויבלה דיגיטל"
+            fill
+            className="object-contain"
+          />
+        </div>
       </button>
 
       {/* פאנל הנגישות - מקובע ל-16px כדי שלא יגדל עם האתר */}
