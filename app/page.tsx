@@ -1114,16 +1114,11 @@ export default function Home() {
                   setIsPending(false);
                   setStatus(result);
 
-                  // בתוך ה-onSubmit של ה-form, אחרי ה-if (result?.success === true)
+                  // מאפס ומדווח המרה רק אם הכל עבר חלק
                   if (result?.success === true) {
-                    // דיווח לפייסבוק
+                    // דיווח לפייסבוק על ליד חדש (Lead Event)
                     if (typeof window !== "undefined" && (window as any).fbq) {
                       (window as any).fbq("track", "Lead");
-                    }
-
-                    // דיווח לגוגל אנליטיקס - השורה החדשה
-                    if (typeof window !== "undefined" && (window as any).gtag) {
-                      (window as any).gtag("event", "lead");
                     }
 
                     e.currentTarget.reset();
