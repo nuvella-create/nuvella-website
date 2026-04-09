@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 // 1. הגדרת המחסום: כרגע על 100 לבדיקות - תחזיר ל-(3, "4 h") לפני דחיפה לורסל
 const ratelimit = new Ratelimit({
   redis: kv,
-  limiter: Ratelimit.slidingWindow(50, "1 h"),
+  limiter: Ratelimit.slidingWindow(3, "4 h"),
 });
 
 const resend = new Resend(process.env.RESEND_API_KEY);
