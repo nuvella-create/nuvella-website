@@ -1116,15 +1116,20 @@ export default function Home() {
                   setStatus(result);
 
                   if (result?.success === true) {
-                    // דיווחים
+                    // 1. דיווח לפייסבוק
                     if (typeof window !== "undefined" && (window as any).fbq) {
                       (window as any).fbq("track", "Lead");
                     }
+
+                    // 2. דיווח לגוגל - הגרסה המשופרת
                     if (typeof window !== "undefined" && (window as any).gtag) {
-                      (window as any).gtag("event", "lead");
+                      (window as any).gtag("event", "lead", {
+                        debug_mode: true,
+                        transport_type: "beacon",
+                      });
                     }
 
-                    formElement.reset(); // משתמשים במשתנה ששמרנו
+                    formElement.reset(); // איפוס הטופס
                   }
                 }}
                 id="contact-form"
