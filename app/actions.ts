@@ -73,13 +73,12 @@ export async function sendContactForm(formData: FormData) {
     const { data, error } = await resend.emails.send({
       from: "Nuvella <office@nuvella.co.il>",
       to: ["office@nuvella.co.il"],
-      replyTo: phone,
+      // הסרנו את replyTo כי הוא קיבל מספר טלפון וזה גרם לשגיאה
       subject: `ליד חדש: ${name}`,
       text: `שם: ${name}\nטלפון: ${phone}\nהודעה: ${message || "ללא הודעה"}`,
     });
 
     if (error) {
-      // השגיאה הזאת נרשמת רק בשרת (ורסל), הלקוח לא רואה אותה
       console.error("❌ Resend API Error:", error);
       return {
         error: "חלה שגיאה בשליחת הטופס. ניתן לנסות שוב או ליצור קשר בוואטסאפ.",
