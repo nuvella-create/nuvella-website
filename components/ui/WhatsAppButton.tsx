@@ -11,6 +11,12 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => {
+        // דיווח לפייסבוק על יצירת קשר בוואטסאפ
+        if (typeof window !== "undefined" && (window as any).fbq) {
+          (window as any).fbq("track", "Contact");
+        }
+      }}
       className="fixed bottom-6 left-6 z-[99999] flex items-center justify-center w-[54px] h-[54px] bg-[#25D366] text-white rounded-[14px] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] hover:scale-110 hover:rotate-[5deg] group animate-whatsapp-subtle-pulse shadow-lg"
       aria-label="שלח הודעה בוואטסאפ"
     >
