@@ -10,11 +10,9 @@ export default function TrackingScripts() {
   const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
 
   useEffect(() => {
-    // בדיקה ראשונית אם כבר אישר בעבר
     const consent = localStorage.getItem("cookie-consent");
     if (consent === "true") setHasConsent(true);
 
-    // האזנה לאירוע מהבאנר שלך
     const handleConsent = () => setHasConsent(true);
     window.addEventListener("cookie-accepted", handleConsent);
 
@@ -36,7 +34,8 @@ export default function TrackingScripts() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${GA_ID}');
+              // כאן השינוי - הוספת debug_mode
+              gtag('config', '${GA_ID}', { 'debug_mode': true });
             `}
           </Script>
         </>
