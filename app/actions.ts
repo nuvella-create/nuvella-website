@@ -70,7 +70,7 @@ export async function sendContactForm(formData: FormData) {
 
   // --- שלב 4: שליחת המייל באמת ---
   try {
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "Nuvella <office@nuvella.co.il>",
       to: ["office@nuvella.co.il"],
       replyTo: phone,
@@ -78,10 +78,14 @@ export async function sendContactForm(formData: FormData) {
       text: `שם: ${name}\nטלפון: ${phone}\nהודעה: ${message || "ללא הודעה"}`,
     });
 
+    if (error) {
+      console.error("❌ Resend API Error:", error);
+      return { error: "רזנט חסם את השליחה. בדוק אימות דומיין." };
+    }
+
     return { success: true };
-  } catch (error) {
-    // את השגיאה הזאת השארתי כ-error כי היא נשארת בשרת (ורסל) ולא דולפת ללקוח - חשוב לדיבאג
-    console.error("❌ Resend Error:", error);
-    return { error: "משהו השתבש בשליחה לרזנט." };
+  } catch (err) {
+    console.error("❌ Server Error:", err);
+    return { error: "שגיאת שרת פנימית." };
   }
 }

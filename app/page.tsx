@@ -1104,24 +1104,27 @@ export default function Home() {
               /* --- הטופס המקורי --- */
               <form
                 onSubmit={async (e) => {
-                  e.preventDefault(); // עוצר את האיפוס האוטומטי של Next.js
+                  e.preventDefault();
+                  const formElement = e.currentTarget; // שומרים את הטופס כאן!
                   setIsPending(true);
                   setStatus(null);
 
-                  const formData = new FormData(e.currentTarget);
+                  const formData = new FormData(formElement);
                   const result = await sendContactForm(formData);
 
                   setIsPending(false);
                   setStatus(result);
 
-                  // מאפס ומדווח המרה רק אם הכל עבר חלק
                   if (result?.success === true) {
-                    // דיווח לפייסבוק על ליד חדש (Lead Event)
+                    // דיווחים
                     if (typeof window !== "undefined" && (window as any).fbq) {
                       (window as any).fbq("track", "Lead");
                     }
+                    if (typeof window !== "undefined" && (window as any).gtag) {
+                      (window as any).gtag("event", "lead");
+                    }
 
-                    e.currentTarget.reset();
+                    formElement.reset(); // משתמשים במשתנה ששמרנו
                   }
                 }}
                 id="contact-form"
