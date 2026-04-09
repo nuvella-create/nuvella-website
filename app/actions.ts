@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 // 1. הגדרת המחסום: כרגע על 100 לבדיקות - תחזיר ל-(3, "4 h") לפני דחיפה לורסל
 const ratelimit = new Ratelimit({
   redis: kv,
-  limiter: Ratelimit.slidingWindow(3, "4 h"),
+  limiter: Ratelimit.slidingWindow(50, "1 h"),
 });
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -79,13 +79,16 @@ export async function sendContactForm(formData: FormData) {
     });
 
     if (error) {
+      // השגיאה הזאת נרשמת רק בשרת (ורסל), הלקוח לא רואה אותה
       console.error("❌ Resend API Error:", error);
-      return { error: "רזנט חסם את השליחה. בדוק אימות דומיין." };
+      return {
+        error: "חלה שגיאה בשליחת הטופס. ניתן לנסות שוב או ליצור קשר בוואטסאפ.",
+      };
     }
 
     return { success: true };
   } catch (err) {
     console.error("❌ Server Error:", err);
-    return { error: "שגיאת שרת פנימית." };
+    return { error: "חלה שגיאה טכנית. אנחנו מטפלים בזה, נסה שוב בקרוב." };
   }
 }
