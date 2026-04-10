@@ -15,7 +15,7 @@ const WhatsAppButton = () => {
       onClick={() => {
         // דיווח לפייסבוק
         if (typeof window !== "undefined" && (window as any).fbq) {
-          (window as any).fbq("track", "Contact");
+          (window as any).fbq("track", "Lead");
         }
 
         // דיווח לגוגל - הגרסה החזקה
