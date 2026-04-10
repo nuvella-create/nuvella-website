@@ -42,11 +42,11 @@ const Footer = () => {
 
           {/* הטלפון בשורה שנייה במובייל */}
           <a
-            href="tel:0526052579"
+            href="tel:0539983363"
             dir="ltr"
             className="order-last md:order-first w-full md:w-auto text-center md:text-right hover:text-[#A07730] transition-colors"
           >
-            052-605-2579
+            053-998-3363
           </a>
         </nav>
 

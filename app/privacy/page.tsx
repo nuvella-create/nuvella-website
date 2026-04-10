@@ -88,7 +88,7 @@ export default function PrivacyPolicy() {
         "לכל שאלה, עדכון פרטים או בקשת הסרה, ניתן לפנות אלינו בערוצים הבאים:",
       list: [
         { label: 'דוא"ל:', text: "office@nuvella.co.il" },
-        { label: "טלפון / וואטסאפ:", text: "052-6052579" },
+        { label: "טלפון / וואטסאפ:", text: "053-9983363" },
         { label: "שעות פעילות:", text: "א'-ה' 09:00-18:00" },
       ],
     },
