@@ -1,7 +1,7 @@
 "use client";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "972539983363";
+  const phoneNumber = "972559736329";
   const message =
     "היי איתי, אני רוצה לקבל פרטים על בניית דף נחיתה וקמפיין לעסק שלי. מתי אפשר לדבר?";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;

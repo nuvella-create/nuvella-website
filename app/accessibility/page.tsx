@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "הצהרת נגישות | נויבלה דיגיטל",
+  title: "הצהרת נגישות | Nuvella Digital",
   description:
-    "נויבלה דיגיטל מחויבת להנגשת שירותיה לכלל האוכלוסייה. קראו את הצהרת הנגישות הרשמית שלנו.",
+    "נגישות זה חלק מהמקצועיות שלנו. כאן תוכלו לקרוא על התאמת האתר של נויבלה דיגיטל לכלל המשתמשים.",
 };
 
 interface AccessibilitySection {
@@ -117,11 +117,11 @@ export default function AccessibilityPage() {
               <p className="text-sm text-[#1A1A1A]">
                 <strong>טלפון / וואטסאפ:</strong>{" "}
                 <a
-                  href="tel:0539983363"
+                  href="tel:0559736329"
                   dir="ltr"
                   className="hover:text-[#A07730] transition-colors"
                 >
-                  053-9983363
+                  055-9736329
                 </a>
               </p>
               <p className="text-sm text-[#1A1A1A]">

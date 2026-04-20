@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "מדיניות פרטיות | נויבלה דיגיטל",
+  title: "מדיניות פרטיות | Nuvella Digital",
   description:
-    "מידע על אופן איסוף וניהול הנתונים באתר נויבלה דיגיטל. שקיפות וביטחון הגולש הם בעדיפות עליונה אצלנו.",
+    "איך אנחנו שומרים על המידע שלכם בנויבלה דיגיטל. שקיפות מלאה לגבי הנתונים וניהול הקמפיינים שלנו.",
 };
 
 interface ListItem {
@@ -88,7 +88,7 @@ export default function PrivacyPolicy() {
         "לכל שאלה, עדכון פרטים או בקשת הסרה, ניתן לפנות אלינו בערוצים הבאים:",
       list: [
         { label: 'דוא"ל:', text: "office@nuvella.co.il" },
-        { label: "טלפון / וואטסאפ:", text: "053-9983363" },
+        { label: "טלפון / וואטסאפ:", text: "055-9736329" },
         { label: "שעות פעילות:", text: "א'-ה' 09:00-18:00" },
       ],
     },

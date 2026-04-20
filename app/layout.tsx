@@ -14,12 +14,17 @@ const heebo = Heebo({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nuvella.co.il"), // השורה שמוסיפים כדי לסדר את ה-Open Graph
+  metadataBase: new URL("https://nuvella.co.il"),
   title: "נויבלה דיגיטל | פתרונות שיווק ודיגיטל לעסקים",
   description:
     "אנחנו בונים דפי נחיתה, מריצים קמפיינים ומביאים לידים אמיתיים לעסקים רציניים.",
   alternates: {
-    canonical: "https://nuvella.co.il", // הוספתי לך את זה בשביל ה-SEO
+    canonical: "https://nuvella.co.il",
+  },
+  verification: {
+    other: {
+      "facebook-domain-verification": ["96xempfunvq7zkzmx8kz6f5jja9hvy"],
+    },
   },
   openGraph: {
     title: "נויבלה דיגיטל | פתרונות שיווק ודיגיטל",

@@ -2,76 +2,74 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import {
-  XCircle,
   ChevronDown,
   MousePointer2,
-  HardHat,
-  Construction,
+  Zap,
+  Handshake,
   Target,
-  ShieldCheck,
-  Factory,
-  Key,
+  Settings2,
+  Rocket,
 } from "lucide-react";
 
 const sections = [
   {
     id: 1,
-    title: "המציאות בשטח: מפה לאוזן זה הימור",
-    subtitle: "שלב 1: הריסה",
-    icon: <XCircle className="w-16 h-16 text-red-500/80" />,
+    title: "התהליך: איך הופכים גולש לכסף?",
+    subtitle: "מה יוצא לך מזה",
+    icon: <Zap className="w-16 h-16 text-[#A67C37]" />,
     bullets: [
-      "- המלצות זה הבסיס, אבל זה לא 'ברז' שאפשר לפתוח כשצריך עבודה",
-      "- בזמן שאתה מחכה לטלפון, הלקוחות הכי גדולים כבר סוגרים עם המתחרה",
-      "- הלחץ לסגור חודש גורם לך 'לגלח' מחירים רק כדי שהפועלים לא ישבו בבית",
-      "- אתה מקצוען בשטח - אבל בדיגיטל אתה כרגע תייר, והמתחרים מנצלים את זה",
+      "- דף נחיתה מהיר פי 10 מוויקס - נבנה בקוד נקי (Next.js)",
+      "- קמפיין ממומן שפוגע רק בלקוחות רלוונטיים שצריכים עבודה עכשיו",
+      "- הפיקסל: 'מנהל עבודה' סמוי שרודף אחרי לקוחות שראו ולא השאירו פרטים",
+      "- סינון לידים: מי שפונה אליך כבר ראה עבודות והבין שאתה לא זול",
     ],
   },
   {
     id: 2,
-    title: "היסודות: בונים לך תשתית מבטון מזוין",
-    subtitle: "שלב 2: יציקה",
-    icon: <Construction className="w-16 h-16 text-[#A67C37]" />,
+    title: "הקלפים על השולחן: האינטרס שלי",
+    subtitle: "שקיפות מלאה",
+    icon: <Handshake className="w-16 h-16 text-[#A67C37]" />,
     bullets: [
-      "- לא 'וואלה' ולא 'וויקס' - אני יוצק לך אתר בקוד מאפס (Next.js)",
-      "- זה כמו יסודות לעומק 12 מטר: האתר מהיר, חסין ולא זז גם בעומס",
-      "- 'צלף דיגיטלי' - אנחנו שמים שלט רק בבית של מי שקיבל היתר בנייה השבוע",
-      "- הפיקסל: מנהל עבודה סמוי שרודף אחרי לקוחות שלא השאירו פרטים",
+      "- אני לא עובד בחינם ואני לא פראייר - אני פה כדי לבנות לעצמי שם",
+      "- ההצלחה שלך היא הפורטפוליו שלי - אם לא תרוויח, אין לי עסק",
+      "- אני רעב לתוצאות יותר מכל סוכנות גדולה שרק רוצה את הריטיינר שלך",
+      "- שקיפות מלאה: אתה רואה כל שקל שיוצא ולאן הוא הולך בקמפיין",
     ],
   },
   {
     id: 3,
-    title: "המסננת: למה הלידים שלי הם לא 'פח'?",
-    subtitle: "שלב 3: סינון",
-    icon: <Factory className="w-16 h-16 text-[#A67C37]" />,
+    title: "מה זה דורש ממך? (בלי סיפורים)",
+    subtitle: "ההשקעה שלך",
+    icon: <Target className="w-16 h-16 text-[#A67C37]" />,
     bullets: [
-      "- נמאס לך מ'חופרים' שרוצים רק מחיר? דף הנחיתה שלי הוא שומר הסף",
-      "- הלקוח עובר 'תחקיר' עוד לפני שהוא מקבל את המספר שלך",
-      "- הוא רואה עבודות, מבין שאתה ליגה אחרת, ורק אז מרים יד",
-      "- אתה מקבל קריאת שירות חמה - לקוח שמוכן לסגור ולא רק לעשות סקר",
+      "- 1,500 ₪ עלות הקמה חד פעמית - האתר שלך לתמיד",
+      "- תקציב פרסום: לפחות 1,500 ₪ בחודש למטא (פחות מזה זה סתם הימור)",
+      "- זמן: שיחת אפיון של 20 דקות וזום טכני קצר לפתיחת חשבונות",
+      "- שליטה מלאה: האשראי והחשבונות שלך, אני רק מנהל את המכונה",
     ],
   },
   {
     id: 4,
-    title: "הטאבו: הנכס עובר לבעלותך המלאה",
-    subtitle: "שלב 4: גמר",
-    icon: <ShieldCheck className="w-16 h-16 text-green-600/80" />,
+    title: "החלק המעצבן: הטכנולוגיה עלי",
+    subtitle: "שקט נפשי",
+    icon: <Settings2 className="w-16 h-16 text-[#A67C37]" />,
     bullets: [
-      "- חודש 1: 0 ₪ דמי ניהול - אני מוכיח לך שהמכונה מדפיסה כסף לפני שתשלם",
-      "- 1,500 ₪ הקמה וזהו - האתר שלך לתמיד, רשום על שמך בטאבו הדיגיטלי",
-      "- 500 ₪ ריטיינר: עלות של פועל אחד לחצי יום בשביל שקט נפשי לכל החודש",
-      "- בלי חוזים דרקוניים - אני שותף שלך, לא עוד ספק שגונב אותך",
+      "- פתיחת דף עסקי, אינסטגרם, פיקסלים וחיבורים - הכל אני עושה איתך",
+      "- הגדרת גוגל מפות (Business Profile) כדי שתופיע בחינם בחיפושים",
+      "- חיבור מערכת דיווח לידים ישירות לוואטסאפ העסקי שלך",
+      "- אתה מתעסק בעבודה בשטח - אני סוגר לך את הפינה הטכנית המעיקה",
     ],
   },
   {
     id: 5,
-    title: "מסירת מפתח: יוצאים לשלוט בשוק",
-    subtitle: "שלב 5: אכלוס",
-    icon: <Key className="w-16 h-16 text-[#A67C37]" />,
+    title: "לו'ז עבודה: מתי מתחילים להרוויח?",
+    subtitle: "יוצאים לדרך",
+    icon: <Rocket className="w-16 h-16 text-[#A67C37]" />,
     bullets: [
-      "- מחר בבוקר ה'מכונה' שלך נכנסת לייצור - נותרו 2 מקומות פנויים בלבד",
-      "- אני בן 18, אני רעב להצלחה שלך כי השם שלי תלוי בתוצאות שלך",
-      "- תוך 5 דקות מהלחיצה: מייל סיכום ותיאום שיחת אפיון יוצא אליך",
-      "- בוא נלחץ ונפסיק להמר על העתיד של העסק שלך",
+      "- תוך 72 שעות מהעברת תמונות: דף הנחיתה של העסק באוויר",
+      "- זום טכני קצר: מחברים הכל ולוחצים על ה'פליי' של הקמפיין",
+      "- שיפוף תוצאות: אנחנו משפרים את המודעות עד שהלידים זורמים",
+      "- המטרה: ליד ראשון כבר בשבוע הראשון של הפרסום",
     ],
   },
 ];
@@ -92,21 +90,19 @@ export default function PitchPage() {
         "#whatsapp-button",
         "#accessibility-widget",
       ];
-      selectors.forEach((selector) => {
+      selectors.forEach((s) =>
         document
-          .querySelectorAll(selector)
-          .forEach((el) => ((el as HTMLElement).style.display = "none"));
-      });
+          .querySelectorAll(s)
+          .forEach((el) => ((el as HTMLElement).style.display = "none")),
+      );
       document.body.style.overflow = "hidden";
     };
     hideElements();
-    const timer = setTimeout(hideElements, 1000);
     return () => {
       document
         .querySelectorAll("header, footer")
         .forEach((el) => ((el as HTMLElement).style.display = ""));
       document.body.style.overflow = "";
-      clearTimeout(timer);
     };
   }, []);
 
@@ -127,11 +123,10 @@ export default function PitchPage() {
         className="fixed top-0 left-0 right-0 h-2 bg-[#A67C37] origin-right z-[100001]"
         style={{ scaleX }}
       />
-
       <div className="relative">
-        {sections.map((section) => (
+        {sections.map((s) => (
           <section
-            key={section.id}
+            key={s.id}
             className="h-screen w-full flex flex-col items-center justify-center p-8 relative border-b border-[#A67C37]/10"
           >
             <motion.div
@@ -141,70 +136,51 @@ export default function PitchPage() {
               transition={{ duration: 0.7 }}
               className="max-w-5xl w-full text-right"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <span className="bg-[#A67C37]/10 text-[#A67C37] px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase">
-                  {section.subtitle} — {section.id}/5
+              <div className="mb-4">
+                <span className="bg-[#A67C37]/10 text-[#A67C37] px-4 py-1 rounded-full text-sm font-bold uppercase">
+                  {s.subtitle} — {s.id}/5
                 </span>
               </div>
-
               <div className="flex items-center gap-8 mb-10">
                 <h2 className="text-4xl md:text-7xl font-black text-zinc-900 leading-tight">
-                  {section.id >= 4 ? (
-                    <span className="bg-gradient-to-r from-[#A07730] via-[#E7C58A] to-[#A07730] bg-clip-text text-transparent animate-shimmer font-black">
-                      {section.title}
-                    </span>
+                  {s.id >= 4 ? (
+                    <span className="text-[#A67C37]">{s.title}</span>
                   ) : (
-                    section.title
+                    s.title
                   )}
                 </h2>
-                <div className="hidden md:block opacity-80">{section.icon}</div>
+                <div className="hidden md:block opacity-80">{s.icon}</div>
               </div>
-
               <ul className="space-y-6 mb-16">
-                {section.bullets.map((bullet, i) => (
+                {s.bullets.map((b, i) => (
                   <motion.li
                     key={i}
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + i * 0.1 }}
-                    className="text-xl md:text-3xl text-zinc-600 font-medium flex items-center gap-4"
+                    className="text-xl md:text-3xl text-zinc-600 font-medium"
                   >
-                    <span>{bullet}</span>
+                    {b}
                   </motion.li>
                 ))}
               </ul>
-
-              {section.id === 5 && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  className="flex justify-center mt-4"
-                >
+              {s.id === 5 && (
+                <div className="flex justify-center">
                   <button
                     onClick={handleLaunch}
                     disabled={isSending || sent}
-                    className={`group relative px-20 py-6 rounded-2xl text-3xl font-black transition-all duration-500 shadow-2xl ${
-                      sent
-                        ? "bg-green-600 text-white"
-                        : "bg-[#A67C37] text-white hover:bg-[#8E6A2F] active:scale-95"
-                    }`}
+                    className={`px-20 py-6 rounded-2xl text-3xl font-black transition-all shadow-2xl ${sent ? "bg-green-600 text-white" : "bg-[#A67C37] text-white hover:scale-105 active:scale-95"}`}
                   >
-                    <div className="flex items-center gap-4">
-                      {isSending
-                        ? "יוצק יסודות..."
-                        : sent
-                          ? "מפתח בדרך אליך! 🔥"
-                          : "בוא נלחץ?"}
-                      {!isSending && !sent && (
-                        <MousePointer2 className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      )}
-                    </div>
+                    {isSending
+                      ? "יוצק יסודות..."
+                      : sent
+                        ? "יוצאים לדרך! 🔥"
+                        : "מאשר ומתחילים?"}
                   </button>
-                </motion.div>
+                </div>
               )}
             </motion.div>
-
-            {section.id < 5 && (
+            {s.id < 5 && (
               <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-20 animate-bounce">
                 <ChevronDown size={48} />
               </div>
@@ -212,7 +188,6 @@ export default function PitchPage() {
           </section>
         ))}
       </div>
-
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
@@ -220,9 +195,6 @@ export default function PitchPage() {
         .hide-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
-        }
-        body {
-          background-color: #fdfcf9 !important;
         }
       `}</style>
     </div>
