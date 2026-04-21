@@ -423,7 +423,7 @@ export default function Home() {
         className="py-16 md:py-24 bg-[#FCFBFA] px-6 font-heebo overflow-hidden"
         dir="rtl"
       >
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0">
           {/* טור הטקסט - 60% מהרוחב, יופיע בימין בדסקטופ */}
           <div className="w-full md:w-[60%] flex flex-col items-start text-right order-last md:order-none">
             {/* כותרת הסקשן - עקבית עם שאר האתר */}
@@ -561,7 +561,7 @@ export default function Home() {
           </div>
 
           {/* טור התמונה - 40% מהרוחב, יופיע בשמאל בדסקטופ וראשון במובייל */}
-          <div className="w-full md:w-[40%] order-first md:order-none flex items-center justify-center md:justify-start">
+          <div className="w-full md:w-[40%] order-first md:order-none flex items-center justify-center md:justify-end">
             <div className="relative animate-bob w-[280px] md:w-full max-w-[360px]">
               <Image
                 src="/images/me.png"

@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import FloatingActions from "@/components/layout/FloatingActions";
 import CookieBanner from "@/components/layout/CookieBanner";
 import TrackingScripts from "@/components/layout/TrackingScripts"; // הייבוא החדש
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({
         <CookieBanner />
         <FloatingActions />
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
