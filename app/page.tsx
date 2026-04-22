@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { sendContactForm } from "./actions";
+import { getStoredUtms } from "@/lib/utm";
 
 export default function Home() {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
@@ -1110,6 +1111,10 @@ export default function Home() {
                   setStatus(null);
 
                   const formData = new FormData(formElement);
+
+                  const utms = getStoredUtms();
+                  if (utms) formData.append("utm_data", JSON.stringify(utms));
+
                   const result = await sendContactForm(formData);
 
                   setIsPending(false);
@@ -1118,14 +1123,28 @@ export default function Home() {
                   if (result?.success === true) {
                     // 1. דיווח לפייסבוק
                     if (typeof window !== "undefined" && (window as any).fbq) {
-                      (window as any).fbq("track", "Lead");
+                      const utms = getStoredUtms();
+                      (window as any).fbq("track", "Lead", {
+                        content_name: "Contact Form",
+                        utm_source: utms?.utm_source || "direct",
+                        utm_medium: utms?.utm_medium || "none",
+                        utm_campaign: utms?.utm_campaign || "none",
+                        utm_content: utms?.utm_content || "none",
+                        value: 0.0, // תוכל לשנות אם יש לך ערך לליד
+                        currency: "ILS",
+                      });
                     }
 
                     // 2. דיווח לגוגל - הגרסה המשופרת
                     if (typeof window !== "undefined" && (window as any).gtag) {
+                      const utms = getStoredUtms();
                       (window as any).gtag("event", "lead", {
                         debug_mode: true,
                         transport_type: "beacon",
+                        utm_source: utms?.utm_source || "direct",
+                        utm_medium: utms?.utm_medium || "none",
+                        utm_campaign: utms?.utm_campaign || "none",
+                        utm_content: utms?.utm_content || "none",
                       });
                     }
 

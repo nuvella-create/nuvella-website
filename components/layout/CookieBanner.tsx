@@ -6,14 +6,24 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent");
-    if (!consent) setIsVisible(true);
+
+    // תיקון Migration: אם המשתמש ישן עם ערך "true", נמחק ונבקש בחירה חדשה
+    if (consent === "true") {
+      localStorage.removeItem("cookie-consent");
+      setIsVisible(true);
+    } else if (!consent) {
+      setIsVisible(true);
+    }
   }, []);
 
-  const acceptCookies = () => {
-    localStorage.setItem("cookie-consent", "true");
+  const handleConsent = (type: "all" | "essential") => {
+    localStorage.setItem("cookie-consent", type);
     setIsVisible(false);
-    // שליחת איתות לשאר האתר שהקוקיז אושרו
-    window.dispatchEvent(new Event("cookie-accepted"));
+
+    // שליחת איתות לשאר האתר על סוג ההסכמה שהתקבל
+    window.dispatchEvent(
+      new CustomEvent("cookie-decision-made", { detail: type }),
+    );
   };
 
   if (!isVisible) return null;
@@ -36,13 +46,13 @@ export default function CookieBanner() {
 
         <div className="flex gap-3 w-full md:w-auto">
           <button
-            onClick={acceptCookies}
+            onClick={() => handleConsent("all")}
             className="flex-1 md:flex-none bg-[#A67C37] text-white text-xs font-bold py-3.5 px-8 rounded-xl hover:bg-[#8E6A2F] transition-all duration-200"
           >
             אני מסכים/ה
           </button>
           <button
-            onClick={acceptCookies}
+            onClick={() => handleConsent("essential")}
             className="flex-1 md:flex-none bg-white text-zinc-600 text-xs font-medium py-3.5 px-8 rounded-xl border border-zinc-200 hover:bg-zinc-50 transition-all duration-200"
           >
             רק הכרחיות

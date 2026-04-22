@@ -4,22 +4,29 @@ import { useState, useEffect } from "react";
 import Script from "next/script";
 
 export default function TrackingScripts() {
-  const [hasConsent, setHasConsent] = useState(false);
+  const [hasFullConsent, setHasFullConsent] = useState(false);
 
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
 
   useEffect(() => {
+    // בדיקה בטעינה ראשונית - רק אם הערך הוא "all"
     const consent = localStorage.getItem("cookie-consent");
-    if (consent === "true") setHasConsent(true);
+    if (consent === "all") setHasFullConsent(true);
 
-    const handleConsent = () => setHasConsent(true);
-    window.addEventListener("cookie-accepted", handleConsent);
+    // האזנה להחלטה מהבאנר בזמן אמת
+    const handleDecision = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (detail === "all") setHasFullConsent(true);
+    };
 
-    return () => window.removeEventListener("cookie-accepted", handleConsent);
+    window.addEventListener("cookie-decision-made", handleDecision);
+
+    return () =>
+      window.removeEventListener("cookie-decision-made", handleDecision);
   }, []);
 
-  if (!hasConsent) return null;
+  if (!hasFullConsent) return null;
 
   return (
     <>
@@ -34,7 +41,6 @@ export default function TrackingScripts() {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              // כאן השינוי - הוספת debug_mode
               gtag('config', '${GA_ID}', { 'debug_mode': true });
             `}
           </Script>

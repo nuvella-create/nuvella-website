@@ -4,21 +4,24 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import AccessibilityWidget from "@/components/ui/AccessibilityWidget";
 
 export default function FloatingActions() {
-  const [hasConsent, setHasConsent] = useState(false);
+  const [hasDecision, setHasDecision] = useState(false);
 
   useEffect(() => {
-    // בדיקה אם כבר יש אישור שמור
+    // בדיקה בטעינה ראשונית - כל ערך (all או essential) נחשב החלטה
     const consent = localStorage.getItem("cookie-consent");
-    if (consent) setHasConsent(true);
+    if (consent === "all" || consent === "essential") {
+      setHasDecision(true);
+    }
 
-    // האזנה לרגע הלחיצה בבאנר (בלי לרענן דף)
-    const handleConsent = () => setHasConsent(true);
-    window.addEventListener("cookie-accepted", handleConsent);
+    // האזנה להחלטה מהבאנר בזמן אמת
+    const handleDecision = () => setHasDecision(true);
+    window.addEventListener("cookie-decision-made", handleDecision);
 
-    return () => window.removeEventListener("cookie-accepted", handleConsent);
+    return () =>
+      window.removeEventListener("cookie-decision-made", handleDecision);
   }, []);
 
-  if (!hasConsent) return null;
+  if (!hasDecision) return null;
 
   return (
     <>

@@ -7,6 +7,7 @@ import FloatingActions from "@/components/layout/FloatingActions";
 import CookieBanner from "@/components/layout/CookieBanner";
 import TrackingScripts from "@/components/layout/TrackingScripts"; // הייבוא החדש
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import UtmCapture from "@/components/layout/UtmCapture";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -54,6 +55,7 @@ export default function RootLayout({
       >
         {/* פה נמצאת הלוגיקה החדשה של הסקריפטים - הם ירו רק אחרי אישור */}
         <TrackingScripts />
+        <UtmCapture />
 
         <Header />
         <main className="flex-grow pt-20">{children}</main>
