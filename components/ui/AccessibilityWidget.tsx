@@ -125,7 +125,7 @@ export default function AccessibilityWidget() {
       >
         <div className="relative w-5 h-5 lg:w-6 lg:h-6">
           <Image
-            src="/images/accessibility-icon.png"
+            src="/images/accessibility-icon.webp"
             alt="פתיחת תפריט נגישות - נויבלה דיגיטל"
             fill
             className="object-contain"

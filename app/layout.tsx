@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     description: "בניית דפי נחיתה וניהול קמפיינים מבוססי תוצאות.",
     url: "https://nuvella.co.il",
     siteName: "נויבלה דיגיטל",
-    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/images/og-image.webp", width: 1200, height: 630 }],
     locale: "he_IL",
     type: "website",
   },
   icons: {
-    icon: "/images/favicon.png",
-    apple: "/images/apple-icon.png",
+    icon: "/images/favicon.webp",
+    apple: "/images/apple-icon.webp",
   },
 };
 
@@ -53,6 +53,29 @@ export default function RootLayout({
       <body
         className={`${heebo.className} min-h-screen flex flex-col bg-white text-black antialiased`}
       >
+        {/* סכימה של גוגל - Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Nuvella Digital",
+              image: "https://nuvella.co.il/images/hero-2.webp",
+              description:
+                "סוכנות בוטיק לשיווק דיגיטלי, ניהול קמפיינים ממומנים ובניית דפי נחיתה ממירי פרימיום.",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "IL",
+                addressLocality: "Israel",
+              },
+              url: "https://nuvella.co.il",
+              telephone: "+972539736329",
+              priceRange: "$$",
+            }),
+          }}
+        />
+
         {/* פה נמצאת הלוגיקה החדשה של הסקריפטים - הם ירו רק אחרי אישור */}
         <TrackingScripts />
         <UtmCapture />

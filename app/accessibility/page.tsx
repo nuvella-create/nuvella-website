@@ -117,11 +117,11 @@ export default function AccessibilityPage() {
               <p className="text-sm text-[#1A1A1A]">
                 <strong>טלפון / וואטסאפ:</strong>{" "}
                 <a
-                  href="tel:0559736329"
+                  href="tel:0539736329"
                   dir="ltr"
                   className="hover:text-[#A07730] transition-colors"
                 >
-                  055-9736329
+                  053-973-6329
                 </a>
               </p>
               <p className="text-sm text-[#1A1A1A]">
@@ -137,7 +137,7 @@ export default function AccessibilityPage() {
           </div>
 
           <div className="text-center text-[#666666] text-xs pt-4 font-medium">
-            הצהרת הנגישות עודכנה לאחרונה בתאריך: <strong>5 באפריל 2026</strong>
+            הצהרת הנגישות עודכנה לאחרונה בתאריך: <strong>24 באפריל 2026</strong>
           </div>
         </div>
       </main>

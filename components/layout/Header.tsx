@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathname = usePathname();
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-xl border-b border-[#E5E5E0]">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -13,7 +15,7 @@ const Header = () => {
           className="flex items-center transition-transform hover:scale-105"
         >
           <Image
-            src="/images/hero-1.png"
+            src="/images/hero-1.webp"
             alt="נויבלה דיגיטל - בניית דפי נחיתה ושיווק מבוסס תוצאות"
             width={90}
             height={40}
@@ -44,25 +46,27 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* כפתור הנעה לפעולה */}
-        <Link
-          href="/#contact"
-          className="bg-[#A07730] hover:bg-[#8A6425] text-white rounded-xl flex items-center gap-2 font-black px-5 py-2.5 text-xs transition-all shadow-lg active:scale-95"
-        >
-          אני רוצה מקום
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+        {/* כפתור הנעה לפעולה - נעלם בדף תודה */}
+        {pathname !== "/thanks" && (
+          <Link
+            href="/#contact"
+            className="bg-[#A07730] hover:bg-[#8A6528] text-white rounded-xl flex items-center gap-2 font-black px-5 py-2.5 text-xs transition-all shadow-lg active:scale-95"
           >
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-        </Link>
+            אני רוצה מקום
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+          </Link>
+        )}
       </div>
     </nav>
   );
