@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 // 1. הגדרת המחסום: כרגע על 300 לבדיקות
 const ratelimit = new Ratelimit({
   redis: kv,
-  limiter: Ratelimit.slidingWindow(3, "4 h"),
+  limiter: Ratelimit.slidingWindow(30, "4 h"),
 });
 
 const resend = new Resend(process.env.RESEND_API_KEY);

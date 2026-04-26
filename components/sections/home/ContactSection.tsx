@@ -31,14 +31,15 @@ export default function ContactSection() {
     setStatus(result);
 
     if (result?.success === true) {
-      // דיווח המרות פייסבוק וגוגל
       if (typeof window !== "undefined") {
+        // דיווח לפייסבוק
         if ((window as any).fbq) {
           (window as any).fbq("track", "Lead", {
             content_name: "Contact_Form",
             utm_source: utms?.utm_source || "direct",
           });
         }
+        // דיווח לגוגל
         if ((window as any).gtag) {
           (window as any).gtag("event", "form_lead", {
             method: "form",
@@ -47,8 +48,14 @@ export default function ContactSection() {
           });
         }
       }
-      // מעבר לדף תודה
-      router.push("/thanks");
+
+      // המתנה של חצי שנייה כדי לוודא שהנתונים נשלחו
+      setTimeout(() => {
+        // איפוס מיקום הגלילה לראש הדף
+        window.scrollTo(0, 0);
+        // מעבר לדף תודה
+        router.push("/thanks");
+      }, 500);
     }
   };
 
