@@ -39,9 +39,10 @@ const WhatsAppButton = () => {
       });
     }
     if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", "generate_lead", {
+      (window as any).gtag("event", "whatsapp_lead", {
         method: "whatsapp",
         user_name: cleanName,
+        utm_source: utms?.utm_source || "direct",
       });
     }
 

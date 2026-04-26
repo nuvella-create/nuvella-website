@@ -173,7 +173,7 @@ const Footer = () => {
 
                   // דיווח לגוגל
                   if (typeof window !== "undefined" && (window as any).gtag) {
-                    (window as any).gtag("event", "generate_lead", {
+                    (window as any).gtag("event", "phone_lead", {
                       method: "phone",
                       user_name: visitorName,
                       utm_source: utms?.utm_source || "direct",

@@ -40,9 +40,10 @@ export default function ContactSection() {
           });
         }
         if ((window as any).gtag) {
-          (window as any).gtag("event", "generate_lead", {
+          (window as any).gtag("event", "form_lead", {
             method: "form",
             content_name: "Contact_Form",
+            utm_source: utms?.utm_source || "direct",
           });
         }
       }
