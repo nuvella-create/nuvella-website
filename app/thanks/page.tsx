@@ -6,20 +6,28 @@ import Link from "next/link";
 export default function ThanksPage() {
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // 1. תיקון למובייל - טס לראש הדף בשנייה שהדף נטען
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
       const utms = typeof getStoredUtms === "function" ? getStoredUtms() : null;
 
-      // ירידת המרות פייסבוק
+      // 2. דיווח לפייסבוק
       if ((window as any).fbq) {
         (window as any).fbq("track", "Lead", {
-          content_name: "Form_Submission_Success",
+          content_name: "Form_Lead",
           utm_source: utms?.utm_source || "direct",
         });
       }
 
-      // ירידת המרות גוגל
+      // 3. דיווח לגוגל - כולל כל ה-UTM שצריך
       if ((window as any).gtag) {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-XXXXXXXXX/XXXXXX", // כאן תדביק את הקוד האמיתי שלך
+        (window as any).gtag("event", "form_lead", {
+          method: "form",
+          utm_source: utms?.utm_source || "direct",
+          utm_medium: utms?.utm_medium || "none",
+          utm_campaign: utms?.utm_campaign || "none",
+          utm_content: utms?.utm_content || "none",
+          utm_term: utms?.utm_term || "none",
         });
       }
     }
