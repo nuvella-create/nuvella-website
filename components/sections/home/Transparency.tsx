@@ -90,7 +90,7 @@ export default function Transparency() {
 
             <div className="mb-6">
               <div className="text-[#A07730] text-3xl font-black tracking-tighter">
-                1,500 ₪{" "}
+                2,500 ₪{" "}
                 <span className="text-sm font-normal text-gray-400">
                   חד פעמי
                 </span>
@@ -104,7 +104,7 @@ export default function Transparency() {
 
             <ul className="space-y-3 text-[14px] md:text-[15px] text-white font-medium mt-auto">
               <li className="text-[#A07730] font-bold mb-2">
-                500 ₪ ריטיינר חודשי שכולל:
+                1,000 ₪ ריטיינר חודשי שכולל:
               </li>
               <li>- ניהול ואופטימיזציה של הקמפיין הממומן.</li>
               <li>- ריענון קריאייטיבים ומודעות לשיפור ביצועים.</li>
