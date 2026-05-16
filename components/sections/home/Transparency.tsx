@@ -89,7 +89,7 @@ export default function Transparency() {
             </p>
 
             <div className="mb-6">
-              <div className="text-[#A07730] text-3xl font-black tracking-tighter">
+              <div className="text-[#D4AF37] text-3xl font-black tracking-tighter">
                 2,500 ₪{" "}
                 <span className="text-sm font-normal text-gray-400">
                   חד פעמי
@@ -100,10 +100,10 @@ export default function Transparency() {
               </p>
             </div>
 
-            <div className="w-full h-[1px] bg-[#A07730]/20 mb-6"></div>
+            <div className="w-full h-[1px] bg-[#D4AF37]/20 mb-6"></div>
 
             <ul className="space-y-3 text-[14px] md:text-[15px] text-white font-medium mt-auto">
-              <li className="text-[#A07730] font-bold mb-2">
+              <li className="text-[#D4AF37] font-bold mb-2">
                 1,000 ₪ ריטיינר חודשי שכולל:
               </li>
               <li>- ניהול ואופטימיזציה של הקמפיין הממומן.</li>

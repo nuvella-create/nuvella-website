@@ -1,32 +1,10 @@
-// קוד שקשור לפיקסלים ולבאנר והפיקסל והבחירות לקוח אם לאשר את הבאנר
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Script from "next/script";
 
 export default function TrackingScripts() {
-  const [hasFullConsent, setHasFullConsent] = useState(false);
-
   const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
   const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
-
-  useEffect(() => {
-    // בדיקה בטעינה ראשונית - רק אם הערך הוא "all"
-    const consent = localStorage.getItem("cookie-consent");
-    if (consent === "all") setHasFullConsent(true);
-
-    // האזנה להחלטה מהבאנר בזמן אמת
-    const handleDecision = (e: Event) => {
-      const detail = (e as CustomEvent).detail;
-      if (detail === "all") setHasFullConsent(true);
-    };
-
-    window.addEventListener("cookie-decision-made", handleDecision);
-
-    return () =>
-      window.removeEventListener("cookie-decision-made", handleDecision);
-  }, []);
-
-  if (!hasFullConsent) return null;
 
   return (
     <>

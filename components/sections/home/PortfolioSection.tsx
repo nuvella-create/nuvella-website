@@ -90,8 +90,7 @@ export default function PortfolioSection() {
                 -{" "}
                 <span className="font-bold text-[#1A1A1A] border-b-2 border-[#A07730]">
                   הכסף של הקמפיין פשוט נזרק לפח.
-                </span>{" "}
-                קליק שלא הופך לפנייה הוא בזבוז של תקציב.
+                </span>
               </p>
               <p className="text-[#A07730] font-bold">
                 ככה נראות התשתיות שאני בונה:
@@ -263,8 +262,7 @@ export default function PortfolioSection() {
               בלי דף נחיתה שמשדר סמכות ויודע לסגור -{" "}
               <span className="font-bold text-[#1A1A1A] border-b border-[#A07730]">
                 הכסף של הקמפיין פשוט נזרק לפח.
-              </span>{" "}
-              קליק שלא הופך לפנייה הוא בזבוז של תקציב.
+              </span>
             </p>
             <p className="text-[#1A1A1A] font-bold text-[13px] tracking-tight pt-1">
               ככה נראות התשתיות שאני בונה:

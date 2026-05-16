@@ -56,9 +56,16 @@ export default function ContactSection() {
           </div>
         </div>
 
-        <p className="text-[#4A4A4A] text-base md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
-          אני בוחר את 5 הפרויקטים האלה בקפידה כדי לתת 100% פוקוס לכל לקוח. תשאיר
-          פרטים, נתאם שיחה קצרה ונבין אם אנחנו יוצאים לדרך.
+        <p className="text-[#4A4A4A] text-[14px] md:text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+          <span className="block">
+            חודש ההתנסות הוא השקעה אישית שלי בעסק שלך,
+          </span>
+          <span className="block">
+            לכן המקומות מוגבלים ל-5 פרויקטים בלבד שאני בטוח שיצליחו.
+          </span>
+          <span className="block whitespace-nowrap">
+            תשאיר פרטים, נדבר קצת ונראה אם זה מתאים.
+          </span>
         </p>
 
         <div className="bg-[#F9F9F9] px-4 py-8 md:p-12 rounded-[24px] md:rounded-[32px] border border-gray-100 shadow-2xl shadow-[#A07730]/5 text-right transition-all">
@@ -133,7 +140,7 @@ export default function ContactSection() {
               <textarea
                 name="message"
                 rows={4}
-                placeholder="כמה מילים על העסק ומה המטרה שלך מהדף..."
+                placeholder="כמה מילים על העסק ובאיזה פרויקטים אתה מתמחה..."
                 className={`w-full bg-white border ${
                   status?.fieldErrors?.message
                     ? "border-red-500"

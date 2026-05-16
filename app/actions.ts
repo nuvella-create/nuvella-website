@@ -8,7 +8,7 @@ import { headers } from "next/headers";
 // 1. הגדרת המחסום: כרגע על 300 לבדיקות
 const ratelimit = new Ratelimit({
   redis: kv,
-  limiter: Ratelimit.slidingWindow(30, "4 h"),
+  limiter: Ratelimit.slidingWindow(3, "4 h"),
 });
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -18,7 +18,7 @@ const contactSchema = z.object({
   name: z
     .string()
     .min(3, "חובה למלא שם מלא (לפחות 3 תווים)")
-    .regex(/^[א-תa-zA-Z\s]+$/, "שם חייב להכיל אותיות בלבד"),
+    .regex(/^[א-תa-zA-Z\s\-]+$/, "שם חייב להכיל אותיות בלבד"),
   phone: z
     .string()
     .regex(/^05\d{8}$/, "חובה למלא מספר טלפון ישראלי תקין (10 ספרות)"),
